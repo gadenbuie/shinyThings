@@ -1,6 +1,6 @@
 Package: grkShinyThings
 Title: Reusable Shiny Modules and Other Shiny Things
-Version: 0.0.0.9000
+Version: 0.0.0.9002
 Authors@R: 
     person(given = "First",
            family = "Last",
@@ -9,15 +9,16 @@ Authors@R:
 Description: A collection of re-usable Shiny modules that can be
     dropped into Shiny apps. Also includes additional helper functions.
 License: What license it uses
+URL: https://github.com/GerkeLab/grkShinyThings
+BugReports: https://github.com/GerkeLab/grkShinyThings/issues
+Imports: 
+    magrittr,
+    shiny
+Suggests: 
+    spelling,
+    testthat
 Encoding: UTF-8
+Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
-Suggests: 
-    testthat,
-    spelling
-Language: en-US
-Imports: 
-    magrittr
-URL: https://github.com/GerkeLab/grkShinyThings
-BugReports: https://github.com/GerkeLab/grkShinyThings/issues
