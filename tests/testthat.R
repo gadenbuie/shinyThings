@@ -1,4 +1,4 @@
 library(testthat)
-library(grkShinyThings)
+library(shinyThings)
 
-test_check("grkShinyThings")
+test_check("shinyThings")

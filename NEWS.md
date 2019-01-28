@@ -1,3 +1,3 @@
-# grkShinyThings 0.0.0.9000
+# shinyThings
 
-* Added a `NEWS.md` file to track changes to the package.
+* Add `dropdownButton()` module
