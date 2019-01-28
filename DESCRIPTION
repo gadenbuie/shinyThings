@@ -12,7 +12,9 @@ License: MIT + file LICENSE
 URL: https://github.com/gadenbuie/shinyThings
 BugReports: https://github.com/gadenbuie/shinyThings/issues
 Imports: 
+    htmltools,
     magrittr,
+    purrr,
     shiny
 Suggests: 
     spelling,
