@@ -1,4 +1,4 @@
-Package: grkShinyThings
+Package: shinyThings
 Title: Reusable Shiny Modules and Other Shiny Things
 Version: 0.0.0.9003
 Authors@R: 
@@ -9,8 +9,8 @@ Authors@R:
 Description: A collection of re-usable Shiny modules that can be
     dropped into Shiny apps. Also includes additional helper functions.
 License: MIT + file LICENSE
-URL: https://github.com/GerkeLab/grkShinyThings
-BugReports: https://github.com/GerkeLab/grkShinyThings/issues
+URL: https://github.com/gadenbuie/shinyThings
+BugReports: https://github.com/gadenbuie/shinyThings/issues
 Imports: 
     magrittr,
     shiny
