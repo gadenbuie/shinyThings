@@ -7,7 +7,7 @@
 \title{Bootstrap Dropdown Button Module}
 \usage{
 dropdownButtonUI(id, options, label = "Options", type = "dropdown",
-  buttonId = paste0(id, "-dropdown"), class = NULL)
+  buttonId = paste0(id, "-dropdown"), class = "btn-default")
 
 dropdownButton(id, options)
 
@@ -28,7 +28,7 @@ buttons.}
 
 \item{buttonId}{The HTML id of the dropdown button.}
 
-\item{class}{Additional CSS classes to be added to the dropdown button.}
+\item{class}{CSS classes to be added to the dropdown button.}
 
 \item{display.mode}{The mode in which to display the application. If set to
 the value \code{"showcase"}, shows application code and metadata from a

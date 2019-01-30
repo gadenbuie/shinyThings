@@ -9,7 +9,7 @@
 #'   buttons.
 #' @param type Type of dropdown: one of `"dropdown"` or `"dropup"`
 #' @param buttonId The HTML id of the dropdown button.
-#' @param class Additional CSS classes to be added to the dropdown button.
+#' @param class CSS classes to be added to the dropdown button.
 #' @family dropdownButton
 #' @export
 dropdownButtonUI <- function(
@@ -18,14 +18,19 @@ dropdownButtonUI <- function(
   label = "Options",
   type = "dropdown",
   buttonId = paste0(id, "-dropdown"),
-  class = NULL
+  class = "btn-default"
 ) {
   ns <- NS(id)
-  if (length(class) > 1) class <- paste(class, collapse = " ")
+  if (!grepl("btn-", class)) class <- paste("btn-default", class)
+  if (is.null(class) || length(class) < 1) {
+    class <- "btn-default"
+  } else if (length(class) > 1) {
+    class <- paste(class, collapse = " ")
+  }
   tags$div(
-    class = paste("btn-group", type, class),
+    class = paste("btn-group", type),
     tags$button(
-      class = "btn btn-default dropdown-toggle",
+      class = paste("btn", class, "dropdown-toggle"),
       role = "button",
       id = buttonId,
       "data-toggle" = "dropdown",
