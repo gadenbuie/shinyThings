@@ -15,7 +15,8 @@ Imports:
     htmltools,
     magrittr,
     purrr,
-    shiny
+    shiny,
+    shinyjs
 Suggests: 
     spelling,
     testthat
