@@ -1,0 +1,15 @@
+{
+  "input": {
+    "dropdown-dustin": 1,
+    "dropdown-eleven": 1,
+    "dropdown-lucas": 1,
+    "dropdown-mike": 1,
+    "dropdown-will": 0
+  },
+  "output": {
+    "chosen": "Dustin Henderson \n        \"dustin\" "
+  },
+  "export": {
+
+  }
+}

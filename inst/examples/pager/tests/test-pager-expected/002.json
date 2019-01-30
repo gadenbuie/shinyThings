@@ -1,0 +1,33 @@
+{
+  "input": {
+    "page_break": 3,
+    "pager-page_001": 0,
+    "pager-page_002": 0,
+    "pager-page_003": 0,
+    "pager-page_004": 0,
+    "pager-page_005": 0,
+    "pager-page_006": 0,
+    "pager-page_extra_next": 0,
+    "pager-page_extra_prev": 0,
+    "pager-page_next": 0,
+    "pager-page_prev": 0
+  },
+  "output": {
+    "page_indices": "[1] 10 11 12",
+    "paged_output": {
+      "html": "<ul>\n  <li>j<\/li>\n  <li>k<\/li>\n  <li>l<\/li>\n<\/ul>",
+      "deps": [
+
+      ]
+    },
+    "pager-pager_buttons": {
+      "html": "<nav aria-label=\"Pagination Navigation\">\n  <ul class=\"pagination\">\n    <li class=\"page-item \">\n      <a class=\"action-button page-link\" href=\"#\" id=\"pager-page_prev\">Previous<\/a>\n    <\/li>\n    <li class=\"page-item disabled\">\n      <a href=\"#\" class=\"page-link\" style=\"padding: 6px 8px;\">&#x22ef;<\/a>\n    <\/li>\n    <li class=\"page-item \">\n      <a class=\"action-button page-link\" href=\"#\" id=\"pager-page_002\">2<\/a>\n    <\/li>\n    <li class=\"page-item \">\n      <a class=\"action-button page-link\" href=\"#\" id=\"pager-page_003\">3<\/a>\n    <\/li>\n    <li class=\"page-item active\">\n      <a class=\"action-button page-link\" href=\"#\" id=\"pager-page_004\">4<\/a>\n    <\/li>\n    <li class=\"page-item \">\n      <a class=\"action-button page-link\" href=\"#\" id=\"pager-page_005\">5<\/a>\n    <\/li>\n    <li class=\"page-item \">\n      <a class=\"action-button page-link\" href=\"#\" id=\"pager-page_006\">6<\/a>\n    <\/li>\n    <li class=\"page-item disabled\">\n      <a href=\"#\" class=\"page-link\" style=\"padding: 6px 8px;\">&#x22ef;<\/a>\n    <\/li>\n    <li class=\"page-item \">\n      <a class=\"action-button page-link\" href=\"#\" id=\"pager-page_next\">Next<\/a>\n    <\/li>\n  <\/ul>\n<\/nav>",
+      "deps": [
+
+      ]
+    }
+  },
+  "export": {
+
+  }
+}

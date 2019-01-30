@@ -1,0 +1,13 @@
+app <- ShinyDriver$new("../")
+app$snapshotInit("test-dropdownButton")
+
+app$setInputs(`dropdown-eleven` = "click")
+app$snapshot()
+app$setInputs(`dropdown-mike` = "click")
+app$snapshot()
+app$setInputs(`dropdown-lucas` = "click")
+app$snapshot()
+app$setInputs(`dropdown-dustin` = "click")
+app$snapshot()
+app$setInputs(`dropdown-eleven` = "click")
+app$snapshot()

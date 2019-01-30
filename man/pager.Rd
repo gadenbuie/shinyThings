@@ -14,7 +14,7 @@ paginationUI(id, width = 6, ..., offset = 3)
 pagerUI(id, label_prev = "Previous", label_next = "Next",
   centered = TRUE, class = NULL)
 
-pagerDemo()
+pagerDemo(display.mode = c("showcase", "normal", "auto"))
 }
 \arguments{
 \item{id}{The shared \code{id} of the \code{pagerUI()} and the \code{pager()} module}
@@ -29,6 +29,22 @@ pagerDemo()
 the pagniation buttons}
 
 \item{offset}{The offest of the containing column}
+
+\item{label_prev}{The label of the "Previous" button.}
+
+\item{label_next}{The label of the "Next" button".}
+
+\item{centered}{If \code{TRUE}, the buttons are centered together, otherwise they
+are separated and spread to the left and right edges of their container.}
+
+\item{class}{Additional classes applied to the \code{<nav>} container.}
+
+\item{display.mode}{The mode in which to display the application. If set to
+the value \code{"showcase"}, shows application code and metadata from a
+\code{DESCRIPTION} file in the application directory alongside the
+application. If set to \code{"normal"}, displays the application normally.
+Defaults to \code{"auto"}, which displays the application in the mode given
+in its \code{DESCRIPTION} file, if any.}
 }
 \description{
 A pager module to add pagination to any collection of items. Given a

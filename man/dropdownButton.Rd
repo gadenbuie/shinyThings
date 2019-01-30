@@ -11,12 +11,15 @@ dropdownButtonUI(id, options, label = "Options", type = "dropdown",
 
 dropdownButton(id, options)
 
-dropdownButtonDemo()
+dropdownButtonDemo(display.mode = c("showcase", "normal", "auto"))
 }
 \arguments{
+\item{id}{The shared \code{id} of the \code{dropdownButtonUI()} and the
+\code{drpodownButton()} module}
+
 \item{options}{A named vector of options and labels. The name is the label
-that will appear on the button and the value is the id of the input that
-is returned from the Shiny modules.}
+that will appear on the button and the value is the id of the input that is
+returned from the Shiny modules.}
 
 \item{label}{The button text of the "master" button containing the dropdown
 buttons.}
@@ -26,6 +29,13 @@ buttons.}
 \item{buttonId}{The HTML id of the dropdown button.}
 
 \item{class}{Additional CSS classes to be added to the dropdown button.}
+
+\item{display.mode}{The mode in which to display the application. If set to
+the value \code{"showcase"}, shows application code and metadata from a
+\code{DESCRIPTION} file in the application directory alongside the
+application. If set to \code{"normal"}, displays the application normally.
+Defaults to \code{"auto"}, which displays the application in the mode given
+in its \code{DESCRIPTION} file, if any.}
 }
 \description{
 Creates a bootstrap dropdown button UI, with a server module that returns

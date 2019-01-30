@@ -35,6 +35,11 @@ paginationUI <- function(id, width = 6, ..., offset = 3) {
 
 #' @describeIn pager Next/previous buttons that can be used in addition to,
 #'   or in place of [paginationUI()].
+#' @param label_prev The label of the "Previous" button.
+#' @param label_next The label of the "Next" button".
+#' @param centered If `TRUE`, the buttons are centered together, otherwise they
+#'   are separated and spread to the left and right edges of their container.
+#' @param class Additional classes applied to the `<nav>` container.
 #' @export
 pagerUI <- function(id, label_prev = "Previous", label_next = "Next", centered = TRUE, class = NULL) {
   ns <- NS(id)
@@ -59,10 +64,11 @@ pagerUI <- function(id, label_prev = "Previous", label_next = "Next", centered =
 }
 
 #' @describeIn pager Example app demonstrating usage of the pager module.
+#' @inheritParams shiny::runApp
 #' @export
-pagerDemo <- function() {
+pagerDemo <- function(display.mode = c("showcase", "normal", "auto")) {
   shiny::runApp(system.file("examples", "pager", package = "shinyThings"),
-                display.mode = "showcase")
+                display.mode = match.arg(display.mode))
 }
 
 pager_button <- function(n, ns, s_page = 1) {

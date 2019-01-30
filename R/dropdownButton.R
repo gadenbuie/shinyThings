@@ -1,14 +1,15 @@
 #' @describeIn dropdownButton Creates the dropdown button UI.
 #'
+#' @param id The shared `id` of the `dropdownButtonUI()` and the
+#'   `drpodownButton()` module
 #' @param options A named vector of options and labels. The name is the label
-#'   that will appear on the button and the value is the id of the input that
-#'   is returned from the Shiny modules.
+#'   that will appear on the button and the value is the id of the input that is
+#'   returned from the Shiny modules.
 #' @param label The button text of the "master" button containing the dropdown
 #'   buttons.
 #' @param type Type of dropdown: one of `"dropdown"` or `"dropup"`
 #' @param buttonId The HTML id of the dropdown button.
 #' @param class Additional CSS classes to be added to the dropdown button.
-#' @importFrom shiny NS actionLink reactive
 #' @family dropdownButton
 #' @export
 dropdownButtonUI <- function(
@@ -89,7 +90,7 @@ dropdownButton <- function(id, options) {
 dropdownButtonModule <- function(input, output, session, options) {
   ns <- session$ns
 
-  prev_state <- setNames(rep(0L, length(options)), names(options))
+  prev_state <- stats::setNames(rep(0L, length(options)), names(options))
 
   this_state <- reactive({
     purrr::map_dbl(options, ~ input[[.]] %||% 0L)
@@ -100,7 +101,6 @@ dropdownButtonModule <- function(input, output, session, options) {
     updated_state <- which(prev_state != this_state)
     if (length(updated_state) > 1) {
       warning("More than one button state was updated!")
-      cat(capture.output(str(this_state)), sep = "\n")
     }
     prev_state <<- this_state
     options[updated_state]
@@ -111,8 +111,9 @@ dropdownButtonModule <- function(input, output, session, options) {
 
 #' @describeIn dropdownButton Example app demonstrating usage of the
 #'   dropdownButton module.
+#' @inheritParams shiny::runApp
 #' @export
-dropdownButtonDemo <- function() {
+dropdownButtonDemo <- function(display.mode = c("showcase", "normal", "auto")) {
   shiny::runApp(system.file("examples", "dropdownButton", package = "shinyThings"),
-                display.mode = "showcase")
+                display.mode = match.arg(display.mode))
 }
