@@ -82,6 +82,17 @@ buttonGroup <- function(
   )
 }
 
+#' @describeIn buttonGroup Example app demonstrating usage of the buttonGroup
+#'   input.
+#' @inheritParams shiny::runApp
+#' @export
+buttonGroupDemo <- function(display.mode = c("showcase", "normal", "auto")) {
+  shiny::runApp(
+    pkg_file("examples", "buttonGroup"),
+    display.mode = match.arg(display.mode)
+  )
+}
+
 button <- function(input_id, text, class = "btn btn-default", selected = FALSE) {
   class <- paste(class, collapse = " ")
   if (selected) class <- paste(class, "active")

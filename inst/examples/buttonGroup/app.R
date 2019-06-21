@@ -18,6 +18,7 @@ ui <- fluidPage(
   ),
   tags$p(),
   verbatimTextOutput("chosen_radio"),
+
   tags$h4("Checkbox Buttons"),
   shinyThings::buttonGroup(
     inputId = "button_checkbox",
@@ -26,6 +27,7 @@ ui <- fluidPage(
   ),
   tags$p(),
   verbatimTextOutput("chosen_checkbox"),
+
   tags$h4("Buttons with Style"),
   shinyThings::buttonGroup(
     inputId = "button_style",
@@ -35,6 +37,7 @@ ui <- fluidPage(
   ),
   tags$p(),
   verbatimTextOutput("chosen_style"),
+
   tags$h4("Buttons with Initial Settings"),
   shinyThings::buttonGroup(
     inputId = "button_init",
@@ -45,6 +48,7 @@ ui <- fluidPage(
   ),
   tags$p(),
   verbatimTextOutput("chosen_init"),
+
   tags$h4("Easy Buttons (Removes Spaces)"),
   shinyThings::buttonGroup(
     inputId = "button_easy",

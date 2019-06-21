@@ -2,20 +2,29 @@
 % Please edit documentation in R/button-group.R
 \name{buttonGroup}
 \alias{buttonGroup}
+\alias{buttonGroupDemo}
 \title{A Bootstrap Button Group Input}
 \usage{
-buttonGroup(inputId, options, btn_class = "btn-default",
+buttonGroup(inputId, choices, btn_class = "btn-default",
   selected = NULL, multiple = FALSE, aria_label = NULL, ...)
+
+buttonGroupDemo(display.mode = c("showcase", "normal", "auto"))
 }
 \arguments{
 \item{inputId}{The input id}
 
-\item{options}{A named vector of options and labels. The name is the label
-that will appear on the button and the value is the id of the input that is
-returned from the Shiny modules.}
+\item{choices}{A vector of choices for the button group. The names will be
+used for button labels and the value are returned by the input. If an
+unnamed vector is provided, the button labels and values returned will be
+the same with the exception that spaces are replaced with \code{"_"} in the
+value returned by the input.}
 
 \item{btn_class}{A single class applied to each individual button, or a
-vector of button classes for each button (must be same length as \code{options})}
+vector of button classes for each button (must be same length as
+\code{choices}). For more information see
+\url{https://getbootstrap.com/docs/3.3/css/#buttons}. The default button class
+is, appropriately, \code{"btn-default"}. Be sure to incldue this or a similar
+button style class if you modify \code{btn_class}.}
 
 \item{selected}{The buttons, by button value, that should be activated.}
 
@@ -24,8 +33,21 @@ If \code{multiple} is \code{TRUE}, then \code{buttonGroup()} returns a character
 of the selected button values.}
 
 \item{...}{Passed to \code{\link[htmltools:div]{htmltools::div()}}}
+
+\item{display.mode}{The mode in which to display the application. If set to
+the value \code{"showcase"}, shows application code and metadata from a
+\code{DESCRIPTION} file in the application directory alongside the
+application. If set to \code{"normal"}, displays the application normally.
+Defaults to \code{"auto"}, which displays the application in the mode given
+in its \code{DESCRIPTION} file, if any.}
 }
 \description{
 This input operates like a \code{\link[shiny:radioButtons]{shiny::radioButtons()}} or
 \code{\link[shiny:checkboxGroupInput]{shiny::checkboxGroupInput()}} input.
 }
+\section{Functions}{
+\itemize{
+\item \code{buttonGroupDemo}: Example app demonstrating usage of the buttonGroup
+input.
+}}
+
