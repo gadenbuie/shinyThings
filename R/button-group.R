@@ -54,7 +54,7 @@ buttonGroup <- function(
   choices <- gsub(" ", "_", choices)
 
   button_options <- list(
-    input_id = unname(choices),
+    input_id = paste0(inputId, "__", unname(choices)),
     text = names(choices),
     class = btn_class,
     selected = selected_lgl
@@ -64,7 +64,8 @@ buttonGroup <- function(
 
   tagList(
     htmltools::htmlDependency(
-      name = "shinythings-assets", version = packageVersion("shinyThings"),
+      name = "shinythings",
+      version = packageVersion("shinyThings"),
       package = "shinyThings",
       src = "resources",
       script = "shinythingsButtonGroup.js"

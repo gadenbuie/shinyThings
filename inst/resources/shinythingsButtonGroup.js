@@ -11,31 +11,36 @@ $(document).on("click", ".shinythings-btn-group > .btn", function(evt) {
     el.addClass('active');
     if (!parseInt(el.parent().attr('data-multiple'))) {
       el.siblings().removeClass('active');
-    };
-  };
+    }
+  }
   el.blur();
 
-  var btn_active = el.parent()
+  setGroupButtonDataActive(el.parent().prop('id'));
+});
+
+const setGroupButtonDataActive = function(id) {
+  var $el = $('#' + id);
+  var btn_active = $el
     .find(".active")
-    .map(function() { return this.id })
+    .map(function() { return this.id.replace($el.prop('id') + '__', '') })
     .get()
 
   if (btn_active.length === 0) {
-    el.parent().attr('data-active', '');
+    $el.attr('data-active', '');
   } else {
-    btn_active = btn_active.reduce(function(x, y) {return x + '", "' + y});
-
-    el.parent().attr('data-active', '["' + btn_active + '"]');
+    $el.attr('data-active', JSON.stringify(btn_active));
   }
-
   // Raise event to signal value has changed
-  el.parent().trigger("change");
-});
+  $el.trigger("change");
+}
 
 var shinythingsGroupBinding = new Shiny.InputBinding();
 $.extend(shinythingsGroupBinding, {
   find: function(scope) {
     return $(scope).find(".shinythings-btn-group");
+  },
+  initialize: function(el) {
+    setGroupButtonDataActive(el.id);
   },
   getValue: function(el) {
     var btn_active = $(el).attr('data-active');
@@ -43,11 +48,16 @@ $.extend(shinythingsGroupBinding, {
       return JSON.parse(btn_active);
     } else {
       return btn_active;
-    };
+    }
   },
   setValue: function(el, value) {
-    $(el).attr('data-active', value);
-    $(el).find(value).addClass('active').siblings().removeClass('active');
+    el.children().removeClass('active');
+    if (value.length) {
+      for (let val_id of value) {
+        el.find("#" + el.prop('id') + '__' + val_id).addClass('active');
+      }
+    }
+    setGroupButtonDataActive(el.prop('id'));
   },
   subscribe: function(el, callback) {
     $(el).on("change.shinythingsGroupBinding", function(e) {
