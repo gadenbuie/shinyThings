@@ -6,7 +6,11 @@
 #' @param inputId The input id
 #' @inheritParams dropdownButton
 #' @param btn_class A single class applied to each individual button, or a
-#'   vector of button classes for each button (must be same length as `options`)
+#'   vector of button classes for each button (must be same length as
+#'   `options`). For more information see
+#'   <https://getbootstrap.com/docs/3.3/css/#buttons>. The default button class
+#'   is, appropriately, `"btn-default"`. Be sure to incldue this or a similar
+#'   button style class if you modify `btn_class`.
 #' @param selected The buttons, by button value, that should be activated.
 #' @param multiple By default, only a single button may be toggled at a time.
 #'   If `multiple` is `TRUE`, then `buttonGroup()` returns a character vector
@@ -22,7 +26,8 @@ buttonGroup <- function(
   aria_label = NULL,
   ...
 ) {
-  if (!is.null(selected) && !is.na(selected)) {
+  if (!is.null(selected)) {
+    stopifnot(!any(is.na(selected)))
     selected_lgl <- options %in% selected
   } else {
     selected_lgl <- rep(FALSE, length(options))
@@ -57,7 +62,7 @@ buttonGroup <- function(
       class = "shinythings-btn-group btn-group",
       id = inputId,
       `data-input-id` = inputId,
-      `data-active` = paste0('["', selected, '"]', collapse = '", "'),
+      `data-active` = if (!is.null(selected)) jsonlite::toJSON(selected) else "",
       `data-multiple` = as.integer(multiple),
       role = "group",
       ...,
