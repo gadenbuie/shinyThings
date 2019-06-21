@@ -30,6 +30,16 @@ buttonGroup <- function(
   aria_label = NULL,
   ...
 ) {
+
+  if (is.null(names(choices))) {
+    names(choices) <- choices
+  }
+  if (any(grepl(" ", choices))) {
+    warning("Replaced spaces with `_` in buttonGroup() options")
+  }
+  choices <- gsub(" ", "_", choices)
+
+  selected <- restoreInput(inputId, selected)
   if (!is.null(selected)) {
     stopifnot(!any(is.na(selected)))
     selected_lgl <- choices %in% selected
@@ -45,14 +55,6 @@ buttonGroup <- function(
   }
   if (length(btn_class) == 1) btn_class <- rep(btn_class, length(choices))
 
-  if (is.null(names(choices))) {
-    names(choices) <- choices
-  }
-  if (any(grepl(" ", choices))) {
-    warning("Replaced spaces with `_` in buttonGroup() options")
-  }
-  choices <- gsub(" ", "_", choices)
-
   button_options <- list(
     input_id = paste0(inputId, "__", unname(choices)),
     text = names(choices),
@@ -64,11 +66,11 @@ buttonGroup <- function(
 
   tagList(
     htmltools::htmlDependency(
-      name = "shinythings",
+      name    = "shinythings",
       version = packageVersion("shinyThings"),
       package = "shinyThings",
-      src = "resources",
-      script = "shinythingsButtonGroup.js"
+      src     = "resources",
+      script  = "shinythingsButtonGroup.js"
     ),
     tags$div(
       class = "shinythings-btn-group btn-group",
