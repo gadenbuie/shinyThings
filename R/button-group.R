@@ -4,10 +4,14 @@
 #' [shiny::checkboxGroupInput()] input.
 #'
 #' @param inputId The input id
-#' @inheritParams dropdownButton
+#' @param choices A vector of choices for the button group. The names will be
+#'   used for button labels and the value are returned by the input. If an
+#'   unnamed vector is provided, the button labels and values returned will be
+#'   the same with the exception that spaces are replaced with `"_"` in the
+#'   value returned by the input.
 #' @param btn_class A single class applied to each individual button, or a
 #'   vector of button classes for each button (must be same length as
-#'   `options`). For more information see
+#'   `choices`). For more information see
 #'   <https://getbootstrap.com/docs/3.3/css/#buttons>. The default button class
 #'   is, appropriately, `"btn-default"`. Be sure to incldue this or a similar
 #'   button style class if you modify `btn_class`.
@@ -19,7 +23,7 @@
 #' @export
 buttonGroup <- function(
   inputId,
-  options,
+  choices,
   btn_class = "btn-default",
   selected = NULL,
   multiple = FALSE,
@@ -28,23 +32,30 @@ buttonGroup <- function(
 ) {
   if (!is.null(selected)) {
     stopifnot(!any(is.na(selected)))
-    selected_lgl <- options %in% selected
+    selected_lgl <- choices %in% selected
   } else {
-    selected_lgl <- rep(FALSE, length(options))
+    selected_lgl <- rep(FALSE, length(choices))
     selected <- NULL
   }
 
   btn_class <- btn_class %||% "btn-default"
 
-  if (length(btn_class) > 1 && length(btn_class) != length(options)) {
+  if (length(btn_class) > 1 && length(btn_class) != length(choices)) {
     stop("`btn_class` must be length one or the same length as `options`")
   }
-  if (length(btn_class) == 1) btn_class <- rep(btn_class, length(options))
+  if (length(btn_class) == 1) btn_class <- rep(btn_class, length(choices))
 
+  if (is.null(names(choices))) {
+    names(choices) <- choices
+  }
+  if (any(grepl(" ", choices))) {
+    warning("Replaced spaces with `_` in buttonGroup() options")
+  }
+  choices <- gsub(" ", "_", choices)
 
   button_options <- list(
-    input_id = unname(options),
-    text = names(options) %||% options,
+    input_id = unname(choices),
+    text = names(choices),
     class = btn_class,
     selected = selected_lgl
   )
