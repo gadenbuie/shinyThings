@@ -1,6 +1,6 @@
 $(document).on("click", ".shinythings-btn-group > .btn", function(evt) {
   // button that was clicked
-  var el = $(evt.target);
+  var el = $(evt.target).closest('button');
 
   // set state of clicked button to active and deactivate siblings
   // and set the data-active attribute of parent div
@@ -15,7 +15,7 @@ $(document).on("click", ".shinythings-btn-group > .btn", function(evt) {
   }
   el.blur();
 
-  setGroupButtonDataActive(el.parent().prop('id'));
+  setGroupButtonDataActive(el.closest('.shinythings-btn-group').prop('id'));
 });
 
 const setGroupButtonDataActive = function(id) {

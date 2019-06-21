@@ -15,6 +15,11 @@
 #'   <https://getbootstrap.com/docs/3.3/css/#buttons>. The default button class
 #'   is, appropriately, `"btn-default"`. Be sure to incldue this or a similar
 #'   button style class if you modify `btn_class`.
+#' @param btn_icon An single icon name or a vector of icon names (must be the
+#'   same length as `choices`) to be applied to the buttons. See [shiny::icon()]
+#'   for more information.
+#' @param choice_labels A list of labels for the choices that can be arbitrary
+#'   HTML if wrapped in `HTML()`.
 #' @param selected The buttons, by button value, that should be activated.
 #' @param multiple By default, only a single button may be toggled at a time.
 #'   If `multiple` is `TRUE`, then `buttonGroup()` returns a character vector
@@ -25,15 +30,18 @@ buttonGroup <- function(
   inputId,
   choices,
   btn_class = "btn-default",
+  btn_icon = NULL,
+  choice_labels = names(choices),
   selected = NULL,
   multiple = FALSE,
   aria_label = NULL,
   ...
 ) {
 
-  if (is.null(names(choices))) {
-    names(choices) <- choices
+  if (length(choice_labels)  != length(choices)) {
+    stop("`choice_labels` must be the same length as `choices`")
   }
+
   if (any(grepl(" ", choices))) {
     warning("Replaced spaces with `_` in buttonGroup() options")
   }
@@ -55,14 +63,19 @@ buttonGroup <- function(
   }
   if (length(btn_class) == 1) btn_class <- rep(btn_class, length(choices))
 
+  btn_icon <- prep_button_icon(btn_icon, choices)
+
   button_options <- list(
     input_id = paste0(inputId, "__", unname(choices)),
-    text = names(choices),
+    text = choice_labels,
     class = btn_class,
+    icon = btn_icon,
     selected = selected_lgl
   )
 
-  button_list <- purrr::pmap(button_options, button)
+  button_list <- button_options %>%
+    purrr::discard(is.null) %>%
+    purrr::pmap(make_button)
 
   tagList(
     htmltools::htmlDependency(
@@ -96,9 +109,34 @@ buttonGroupDemo <- function(display.mode = c("showcase", "normal", "auto")) {
   )
 }
 
-button <- function(input_id, text, class = "btn btn-default", selected = FALSE) {
+make_button <- function(input_id, text = NULL, class = "btn btn-default", icon = "", selected = FALSE) {
   class <- paste(class, collapse = " ")
   if (selected) class <- paste(class, "active")
   class <- paste("btn", class)
-  tags$button(id = input_id, class = class, text)
+  tags$button(id = input_id, class = class, if (icon != "") shiny::icon(icon), text)
+}
+
+prep_button_icon <- function(btn_icon, choices) {
+  if (is.null(btn_icon)) {
+    return(rep("", length(choices)))
+  }
+
+  # btn icons must be length 1 (all buttons), length of choices, or named
+  if (length(btn_icon) == 1) {
+    btn_icon <- rep(btn_icon, length(choices))
+  } else {
+    if (is.null(names(btn_icon))) {
+      if (length(btn_icon) != length(choices)) {
+        stop("`btn_icon` must be length one or the same length as `options`")
+      }
+    } else {
+      btn_icons <- rep("", length(choices))
+      names(btn_icons) <- unname(choices)
+      for (choice in intersect(choices, names(btn_icon))) {
+        btn_icons[choice] <- btn_icon[choice]
+      }
+      btn_icon <- btn_icons
+    }
+  }
+  return(btn_icon)
 }

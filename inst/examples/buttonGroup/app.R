@@ -51,13 +51,30 @@ ui <- function(request) {
     tags$p(),
     verbatimTextOutput("chosen_init"),
 
-    tags$h4("Easy Buttons (Removes Spaces)"),
+    tags$h4("Buttons with icons"),
     shinyThings::buttonGroup(
-      inputId = "button_easy",
-      choices = c("Eleven", "Will Byers", "Mike Wheeler")
+      inputId = "button_icon",
+      choices = c("left", "center", "justify", "right"),
+      btn_icon = paste0("align-", c("left", "center", "justify", "right")),
+      multiple = FALSE
     ),
     tags$p(),
-    verbatimTextOutput("chosen_easy"),
+    verbatimTextOutput("chosen_icon"),
+
+    tags$h4("Buttons with HTML"),
+    shinyThings::buttonGroup(
+      inputId = "button_html",
+      choices = c("bold", "italic", "underline", "strikethrough"),
+      choice_labels = list(
+        HTML("<strong>B</strong>"),
+        HTML("<i>I</i>"),
+        HTML("<span style='text-decoration: underline'>U</span>"),
+        HTML("<del>S</del>")
+      ),
+      multiple = FALSE
+    ),
+    tags$p(),
+    verbatimTextOutput("chosen_html"),
 
     bookmarkButton()
   )
@@ -68,7 +85,8 @@ server <- function(input, output) {
   output$chosen_checkbox <- renderPrint(input$button_checkbox)
   output$chosen_style    <- renderPrint(input$button_style)
   output$chosen_init     <- renderPrint(input$button_init)
-  output$chosen_easy     <- renderPrint(input$button_easy)
+  output$chosen_icon     <- renderPrint(input$button_icon)
+  output$chosen_html     <- renderPrint(input$button_html)
 }
 
 shinyApp(ui = ui, server = server, enableBookmarking = "url")
