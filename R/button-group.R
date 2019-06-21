@@ -38,7 +38,7 @@ buttonGroup <- function(
   ...
 ) {
 
-  if (length(choice_labels)  != length(choices)) {
+  if (!is.null(choice_labels) && length(choice_labels) != length(choices)) {
     stop("`choice_labels` must be the same length as `choices`")
   }
 
