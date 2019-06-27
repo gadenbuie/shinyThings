@@ -14,6 +14,7 @@ BugReports: https://github.com/gadenbuie/shinyThings/issues
 Imports: 
     htmltools,
     jsonlite,
+    magrittr,
     purrr,
     shiny (>= 0.13.0),
     shinyjs (>= 0.4.0)
