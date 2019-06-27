@@ -89,7 +89,6 @@ buttonGroup <- function(
       class = "shinythings-btn-group btn-group",
       id = inputId,
       `data-input-id` = inputId,
-      `data-active` = if (!is.null(selected)) jsonlite::toJSON(selected) else "",
       `data-multiple` = as.integer(multiple),
       role = "group",
       ...,
