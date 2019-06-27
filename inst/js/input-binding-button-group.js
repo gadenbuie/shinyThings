@@ -26,7 +26,7 @@ $.extend(shinythingsGroupBinding, {
   find: (scope) => scope.querySelectorAll(".shinythings-btn-group[id]"),
   //getType: (el) => "shinythings.buttonGroup",
   getValue: function(el) {
-    let value = $(el)
+    var value = $(el)
       .find(".active")
       .map(function() {return this.value})
       .get();
