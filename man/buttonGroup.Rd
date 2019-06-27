@@ -6,7 +6,8 @@
 \title{A Bootstrap Button Group Input}
 \usage{
 buttonGroup(inputId, choices, btn_class = "btn-default",
-  selected = NULL, multiple = FALSE, aria_label = NULL, ...)
+  btn_icon = NULL, choice_labels = names(choices), selected = NULL,
+  multiple = FALSE, aria_label = NULL, ...)
 
 buttonGroupDemo(display.mode = c("showcase", "normal", "auto"))
 }
@@ -16,8 +17,7 @@ buttonGroupDemo(display.mode = c("showcase", "normal", "auto"))
 \item{choices}{A vector of choices for the button group. The names will be
 used for button labels and the value are returned by the input. If an
 unnamed vector is provided, the button labels and values returned will be
-the same with the exception that spaces are replaced with \code{"_"} in the
-value returned by the input.}
+the same.}
 
 \item{btn_class}{A single class applied to each individual button, or a
 vector of button classes for each button (must be same length as
@@ -25,6 +25,13 @@ vector of button classes for each button (must be same length as
 \url{https://getbootstrap.com/docs/3.3/css/#buttons}. The default button class
 is, appropriately, \code{"btn-default"}. Be sure to incldue this or a similar
 button style class if you modify \code{btn_class}.}
+
+\item{btn_icon}{An single icon name or a vector of icon names (must be the
+same length as \code{choices}) to be applied to the buttons. See \code{\link[shiny:icon]{shiny::icon()}}
+for more information.}
+
+\item{choice_labels}{A list of labels for the choices that can be arbitrary
+HTML if wrapped in \code{HTML()}.}
 
 \item{selected}{The buttons, by button value, that should be activated.}
 
@@ -40,6 +47,11 @@ the value \code{"showcase"}, shows application code and metadata from a
 application. If set to \code{"normal"}, displays the application normally.
 Defaults to \code{"auto"}, which displays the application in the mode given
 in its \code{DESCRIPTION} file, if any.}
+}
+\value{
+The value returned by the input to the Shiny server is either \code{NULL}
+when no buttons are selected or a character vector containing the values
+from \code{choices} corresponding to the active buttons.
 }
 \description{
 This input operates like a \code{\link[shiny:radioButtons]{shiny::radioButtons()}} or

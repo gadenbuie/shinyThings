@@ -7,8 +7,7 @@
 #' @param choices A vector of choices for the button group. The names will be
 #'   used for button labels and the value are returned by the input. If an
 #'   unnamed vector is provided, the button labels and values returned will be
-#'   the same with the exception that spaces are replaced with `"_"` in the
-#'   value returned by the input.
+#'   the same.
 #' @param btn_class A single class applied to each individual button, or a
 #'   vector of button classes for each button (must be same length as
 #'   `choices`). For more information see
@@ -25,6 +24,11 @@
 #'   If `multiple` is `TRUE`, then `buttonGroup()` returns a character vector
 #'   of the selected button values.
 #' @param ... Passed to [htmltools::div()]
+#'
+#' @return The value returned by the input to the Shiny server is either `NULL`
+#'   when no buttons are selected or a character vector containing the values
+#'   from `choices` corresponding to the active buttons.
+#'
 #' @export
 buttonGroup <- function(
   inputId,
@@ -41,11 +45,6 @@ buttonGroup <- function(
   if (!is.null(choice_labels) && length(choice_labels) != length(choices)) {
     stop("`choice_labels` must be the same length as `choices`")
   }
-
-  if (any(grepl(" ", choices))) {
-    warning("Replaced spaces with `_` in buttonGroup() options")
-  }
-  choices <- gsub(" ", "_", choices)
 
   selected <- restoreInput(inputId, selected)
   if (!is.null(selected)) {
@@ -66,7 +65,8 @@ buttonGroup <- function(
   btn_icon <- prep_button_icon(btn_icon, choices)
 
   button_options <- list(
-    input_id = paste0(inputId, "__", unname(choices)),
+    input_id = paste0(inputId, "__", seq_along(choices)),
+    value = choices,
     text = choice_labels,
     class = btn_class,
     icon = btn_icon,
@@ -82,8 +82,8 @@ buttonGroup <- function(
       name    = "shinythings",
       version = packageVersion("shinyThings"),
       package = "shinyThings",
-      src     = "resources",
-      script  = "shinythingsButtonGroup.js"
+      src     = "js",
+      script  = "input-binding-button-group.js"
     ),
     tags$div(
       class = "shinythings-btn-group btn-group",
@@ -109,11 +109,11 @@ buttonGroupDemo <- function(display.mode = c("showcase", "normal", "auto")) {
   )
 }
 
-make_button <- function(input_id, text = NULL, class = "btn btn-default", icon = "", selected = FALSE) {
+make_button <- function(input_id, value, text = NULL, class = "btn btn-default", icon = "", selected = FALSE) {
   class <- paste(class, collapse = " ")
   if (selected) class <- paste(class, "active")
   class <- paste("btn", class)
-  tags$button(id = input_id, class = class, if (icon != "") shiny::icon(icon), text)
+  tags$button(id = input_id, class = class, value = value, if (icon != "") shiny::icon(icon), text)
 }
 
 prep_button_icon <- function(btn_icon, choices) {
