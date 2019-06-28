@@ -139,6 +139,20 @@ buttonGroupDemo <- function(display.mode = c("showcase", "normal", "auto")) {
   )
 }
 
+#' @describeIn buttonGroup Set active buttons to the choices in `values`, which
+#'   must match the values in `choices` provided to `buttonGroup()`.
+#' @param session The `session` object passed to function given to `shinyServer`.
+#' @export
+updateButtonGroupValue <- function(
+  inputId,
+  values = NULL,
+  session = shiny::getDefaultReactiveDomain()
+) {
+  stopifnot(is.character(values) || is.null(values))
+
+  session$sendInputMessage(inputId, list(value = values))
+}
+
 make_button <- function(
   input_id,
   value,

@@ -38,12 +38,18 @@ $.extend(shinythingsGroupBinding, {
     }
   },
   setValue: function(el, value) {
-    el.children().removeClass('active');
+    var $el = $(el);
+    $el.children().removeClass('active');
     if (value.length) {
-      for (let val_id of value) {
-        el.find("#" + el.prop('id') + '__' + val_id).addClass('active');
+      if (!$.isArray(value)) {
+        value = [value];
+      }
+      for (let val_ind of value) {
+        var button_sel = "button[value='" + val_ind + "']";
+        $el.find(button_sel).addClass('active');
       }
     }
+    $el.trigger("change");
   },
   subscribe: function(el, callback) {
     $(el).on("change.shinythingsGroupBinding", function(e) {
@@ -52,6 +58,11 @@ $.extend(shinythingsGroupBinding, {
   },
   unsubscribe: function(el) {
     $(el).off(".shinythingsGroupBinding");
+  },
+  receiveMessage: (el, msg) => {
+    if (msg.value) {
+      shinythingsGroupBinding.setValue(el, msg.value);
+    }
   }
 });
 

@@ -3,6 +3,7 @@
 \name{buttonGroup}
 \alias{buttonGroup}
 \alias{buttonGroupDemo}
+\alias{updateButtonGroupValue}
 \title{A Bootstrap Button Group Input}
 \usage{
 buttonGroup(inputId, choices, choice_labels = names(choices),
@@ -10,6 +11,9 @@ buttonGroup(inputId, choices, choice_labels = names(choices),
   selected = NULL, multiple = FALSE, aria_label = NULL, ...)
 
 buttonGroupDemo(display.mode = c("showcase", "normal", "auto"))
+
+updateButtonGroupValue(inputId, values = NULL,
+  session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
 \item{inputId}{The input id}
@@ -61,6 +65,8 @@ the value \code{"showcase"}, shows application code and metadata from a
 application. If set to \code{"normal"}, displays the application normally.
 Defaults to \code{"auto"}, which displays the application in the mode given
 in its \code{DESCRIPTION} file, if any.}
+
+\item{session}{The \code{session} object passed to function given to \code{shinyServer}.}
 }
 \value{
 The value returned by the input to the Shiny server is either \code{NULL}
@@ -75,5 +81,8 @@ This input operates like a \code{\link[shiny:radioButtons]{shiny::radioButtons()
 \itemize{
 \item \code{buttonGroupDemo}: Example app demonstrating usage of the buttonGroup
 input.
+
+\item \code{updateButtonGroupValue}: Set active buttons to the choices in \code{values}, which
+must match the values in \code{choices} provided to \code{buttonGroup()}.
 }}
 
