@@ -5,9 +5,9 @@
 \alias{buttonGroupDemo}
 \title{A Bootstrap Button Group Input}
 \usage{
-buttonGroup(inputId, choices, btn_class = "btn-default",
-  btn_icon = NULL, choice_labels = names(choices), selected = NULL,
-  multiple = FALSE, aria_label = NULL, ...)
+buttonGroup(inputId, choices, choice_labels = names(choices),
+  btn_class = "btn-default", btn_icon = NULL, btn_extra = NULL,
+  selected = NULL, multiple = FALSE, aria_label = NULL, ...)
 
 buttonGroupDemo(display.mode = c("showcase", "normal", "auto"))
 }
@@ -18,6 +18,9 @@ buttonGroupDemo(display.mode = c("showcase", "normal", "auto"))
 used for button labels and the value are returned by the input. If an
 unnamed vector is provided, the button labels and values returned will be
 the same.}
+
+\item{choice_labels}{A list of labels for the choices that can be arbitrary
+HTML if wrapped in \code{HTML()}. Set to \code{""} or \code{NULL} for no label.}
 
 \item{btn_class}{A single class applied to each individual button, or a
 vector of button classes for each button (must be same length as
@@ -30,8 +33,19 @@ button style class if you modify \code{btn_class}.}
 same length as \code{choices}) to be applied to the buttons. See \code{\link[shiny:icon]{shiny::icon()}}
 for more information.}
 
-\item{choice_labels}{A list of labels for the choices that can be arbitrary
-HTML if wrapped in \code{HTML()}.}
+\item{btn_extra}{A list or list of lists of additional attributes to be added
+to the buttons. If the list does not contain sublists (i.e. depth 1), then
+the same attributes are applied to all of the buttons. Otherwise, the
+list of attributes should match the buttons generated from \code{choices}.
+
+For example\preformatted{buttonGroup(
+  inputId = "special_group", choices = c("one", "two"),
+  btn_extra = list(
+    list(alt = "Button One"),
+    list(alt = "Button Two")
+  )
+)
+}}
 
 \item{selected}{The buttons, by button value, that should be activated.}
 

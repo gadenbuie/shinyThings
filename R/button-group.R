@@ -8,6 +8,8 @@
 #'   used for button labels and the value are returned by the input. If an
 #'   unnamed vector is provided, the button labels and values returned will be
 #'   the same.
+#' @param choice_labels A list of labels for the choices that can be arbitrary
+#'   HTML if wrapped in `HTML()`. Set to `""` or `NULL` for no label.
 #' @param btn_class A single class applied to each individual button, or a
 #'   vector of button classes for each button (must be same length as
 #'   `choices`). For more information see
@@ -17,8 +19,22 @@
 #' @param btn_icon An single icon name or a vector of icon names (must be the
 #'   same length as `choices`) to be applied to the buttons. See [shiny::icon()]
 #'   for more information.
-#' @param choice_labels A list of labels for the choices that can be arbitrary
-#'   HTML if wrapped in `HTML()`.
+#' @param btn_extra A list or list of lists of additional attributes to be added
+#'   to the buttons. If the list does not contain sublists (i.e. depth 1), then
+#'   the same attributes are applied to all of the buttons. Otherwise, the
+#'   list of attributes should match the buttons generated from `choices`.
+#'
+#'   For example
+#'
+#'   ```
+#'   buttonGroup(
+#'     inputId = "special_group", choices = c("one", "two"),
+#'     btn_extra = list(
+#'       list(alt = "Button One"),
+#'       list(alt = "Button Two")
+#'     )
+#'   )
+#'   ```
 #' @param selected The buttons, by button value, that should be activated.
 #' @param multiple By default, only a single button may be toggled at a time.
 #'   If `multiple` is `TRUE`, then `buttonGroup()` returns a character vector
@@ -33,9 +49,10 @@
 buttonGroup <- function(
   inputId,
   choices,
+  choice_labels = names(choices),
   btn_class = "btn-default",
   btn_icon = NULL,
-  choice_labels = names(choices),
+  btn_extra = NULL,
   selected = NULL,
   multiple = FALSE,
   aria_label = NULL,
@@ -62,6 +79,19 @@ buttonGroup <- function(
   }
   if (length(btn_class) == 1) btn_class <- rep(btn_class, length(choices))
 
+  if (!is.null(btn_extra)) {
+    if (!is.list(btn_extra)) stop("`btn_extra` must be a list or list of lists")
+
+    if (is.list(btn_extra[[1]]) && length(btn_extra) != length(choices)) stop(
+      "`btn_extra` has ", length(btn_extra), " option but there are ",
+      length(choices), " buttons."
+    )
+
+    if (!is.list(btn_extra[[1]])) {
+      btn_extra <- rep(list(btn_extra), length(choices))
+    }
+  }
+
   btn_icon <- prep_button_icon(btn_icon, choices)
 
   button_options <- list(
@@ -70,6 +100,7 @@ buttonGroup <- function(
     text = choice_labels,
     class = btn_class,
     icon = btn_icon,
+    extra = btn_extra,
     selected = selected_lgl
   )
 
@@ -108,11 +139,27 @@ buttonGroupDemo <- function(display.mode = c("showcase", "normal", "auto")) {
   )
 }
 
-make_button <- function(input_id, value, text = NULL, class = "btn btn-default", icon = "", selected = FALSE) {
+make_button <- function(
+  input_id,
+  value,
+  text = NULL,
+  class = "btn btn-default",
+  icon = "",
+  selected = FALSE,
+  extra = NULL
+) {
   class <- paste(class, collapse = " ")
   if (selected) class <- paste(class, "active")
   class <- paste("btn", class)
-  tags$button(id = input_id, class = class, value = value, if (icon != "") shiny::icon(icon), text)
+  button_args <- list(
+    id = input_id,
+    class = class,
+    value = value,
+    if (icon != "") shiny::icon(icon),
+    text
+  )
+  button_args <- c(button_args, extra)
+  htmltools::tag("button", button_args)
 }
 
 prep_button_icon <- function(btn_icon, choices) {
