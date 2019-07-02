@@ -95,10 +95,13 @@ dropdownButton <- function(id, options) {
 dropdownButtonModule <- function(input, output, session, options) {
   ns <- session$ns
 
-  prev_state <- stats::setNames(rep(0L, length(options)), names(options))
+  if (!inherits(options, "reactive")) options <- reactiveVal(options)
+  observe({
+    prev_state <<- stats::setNames(rep(0L, length(options())), names(options()))
+  })
 
   this_state <- reactive({
-    purrr::map_dbl(options, ~ input[[.]] %||% 0L)
+    purrr::map_dbl(options(), ~ input[[.]] %||% 0L)
   })
 
   clicked_button <- reactive({
@@ -108,10 +111,10 @@ dropdownButtonModule <- function(input, output, session, options) {
       warning("More than one button state was updated!")
     }
     prev_state <<- this_state
-    options[updated_state]
+    options()[updated_state]
   })
 
-  return(clicked_button)
+  return(reactive(clicked_button()))
 }
 
 #' @describeIn dropdownButton Example app demonstrating usage of the
