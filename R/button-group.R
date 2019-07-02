@@ -150,6 +150,8 @@ updateButtonGroupValue <- function(
 ) {
   stopifnot(is.character(values) || is.null(values))
 
+  if (is.null(values)) values <- list(NULL)
+
   session$sendInputMessage(inputId, list(value = values))
 }
 
