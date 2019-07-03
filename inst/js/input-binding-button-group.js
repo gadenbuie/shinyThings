@@ -21,15 +21,15 @@ $(document).on("click", ".shinythings-btn-group > .btn", function(evt) {
 });
 
 var shinythingsGroupBinding = new Shiny.InputBinding();
-
 $.extend(shinythingsGroupBinding, {
-  find: (scope) => scope.querySelectorAll(".shinythings-btn-group[id]"),
+  find: function find(scope) {
+    return scope.querySelectorAll(".shinythings-btn-group[id]");
+  },
   //getType: (el) => "shinythings.buttonGroup",
-  getValue: function(el) {
-    var value = $(el)
-      .find(".active")
-      .map(function() {return this.value})
-      .get();
+  getValue: function getValue(el) {
+    var value = $(el).find(".active").map(function () {
+      return this.value;
+    }).get();
 
     if (value.length > 0) {
       return value;
@@ -38,14 +38,16 @@ $.extend(shinythingsGroupBinding, {
     }
   },
   setValue: function(el, value) {
+    console.log(el.id);
     var $el = $(el);
+    console.log(value);
     $el.children().removeClass('active');
     if (value.length) {
       if (!$.isArray(value)) {
         value = [value];
       }
-      for (let val_ind of value) {
-        var button_sel = "button[value='" + val_ind + "']";
+      for (var i = 0; i < value.length; i++) {
+        var button_sel = "button[value='" + value[i] + "']";
         $el.find(button_sel).addClass('active');
       }
     }
@@ -59,7 +61,7 @@ $.extend(shinythingsGroupBinding, {
   unsubscribe: function(el) {
     $(el).off(".shinythingsGroupBinding");
   },
-  receiveMessage: (el, msg) => {
+  receiveMessage: function receiveMessage(el, msg) {
     if (msg.value) {
       shinythingsGroupBinding.setValue(el, msg.value);
     }
