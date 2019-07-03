@@ -8,7 +8,7 @@
 \usage{
 buttonGroup(inputId, choices, choice_labels = names(choices),
   btn_class = "btn-default", btn_icon = NULL, btn_extra = NULL,
-  selected = NULL, multiple = FALSE, aria_label = NULL, ...)
+  selected = NULL, multiple = FALSE, ...)
 
 buttonGroupDemo(display.mode = c("showcase", "normal", "auto"))
 
@@ -65,6 +65,9 @@ the value \code{"showcase"}, shows application code and metadata from a
 application. If set to \code{"normal"}, displays the application normally.
 Defaults to \code{"auto"}, which displays the application in the mode given
 in its \code{DESCRIPTION} file, if any.}
+
+\item{values}{The \code{choices} (not \code{choice labels}) that should be activated.
+Set to \code{NULL} to deactivate all buttons.}
 
 \item{session}{The \code{session} object passed to function given to \code{shinyServer}.}
 }

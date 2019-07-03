@@ -55,7 +55,6 @@ buttonGroup <- function(
   btn_extra = NULL,
   selected = NULL,
   multiple = FALSE,
-  aria_label = NULL,
   ...
 ) {
 
@@ -63,7 +62,7 @@ buttonGroup <- function(
     stop("`choice_labels` must be the same length as `choices`")
   }
 
-  selected <- restoreInput(inputId, selected)
+  selected <- shiny::restoreInput(inputId, selected)
   if (!is.null(selected)) {
     stopifnot(!any(is.na(selected)))
     selected_lgl <- choices %in% selected
@@ -108,10 +107,10 @@ buttonGroup <- function(
     purrr::discard(is.null) %>%
     purrr::pmap(make_button)
 
-  tagList(
+  htmltools::tagList(
     htmltools::htmlDependency(
       name    = "shinythings",
-      version = packageVersion("shinyThings"),
+      version = utils::packageVersion("shinyThings"),
       package = "shinyThings",
       src     = "js",
       script  = "input-binding-button-group.js"
@@ -141,6 +140,8 @@ buttonGroupDemo <- function(display.mode = c("showcase", "normal", "auto")) {
 
 #' @describeIn buttonGroup Set active buttons to the choices in `values`, which
 #'   must match the values in `choices` provided to `buttonGroup()`.
+#' @param values The `choices` (not `choice labels`) that should be activated.
+#'   Set to `NULL` to deactivate all buttons.
 #' @param session The `session` object passed to function given to `shinyServer`.
 #' @export
 updateButtonGroupValue <- function(
