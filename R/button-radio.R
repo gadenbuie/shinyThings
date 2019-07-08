@@ -4,11 +4,13 @@
 #' with the appearance of a button.
 #'
 #' @param inputId The input id
+#' @param label The text to appear above the buttons (set to `NULL` for no
+#'   label.)
 #' @inheritParams buttonGroup
 #' @param selected The value that should be active initially.
 #' @param selected_background Background color of the label when selected. Can
-#'   be set globally via [radioSwitchButtons_default_style()]. Default value
-#'   is `"#007BFF"`.
+#'   be set globally via [radioSwitchButtons_default_style()]. Default value is
+#'   `"#007BFF"`.
 #' @param selected_color Text color of the label text when selected. Can be set
 #'   globally via [radioSwitchButtons_default_style()]. Default value is
 #'   `"#FFFFFF"`.

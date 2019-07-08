@@ -16,7 +16,8 @@ Imports:
     magrittr,
     purrr,
     shiny (>= 0.13.0),
-    shinyjs (>= 0.4.0)
+    shinyjs (>= 0.4.0),
+    whisker
 Suggests: 
     shinytest (>= 1.3.0),
     spelling,

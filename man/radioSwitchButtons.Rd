@@ -24,6 +24,9 @@ radioSwitchButtonsDemo(display.mode = c("showcase", "normal", "auto"))
 \arguments{
 \item{inputId}{The input id}
 
+\item{label}{The text to appear above the buttons (set to \code{NULL} for no
+label.)}
+
 \item{choices}{A vector of choices for the button group. The names will be
 used for button labels and the value are returned by the input. If an
 unnamed vector is provided, the button labels and values returned will be
@@ -35,8 +38,8 @@ HTML if wrapped in \code{HTML()}. Set to \code{""} or \code{NULL} for no label.}
 \item{selected}{The value that should be active initially.}
 
 \item{selected_background}{Background color of the label when selected. Can
-be set globally via \code{\link[=radioSwitchButtons_default_style]{radioSwitchButtons_default_style()}}. Default value
-is \code{"#007BFF"}.}
+be set globally via \code{\link[=radioSwitchButtons_default_style]{radioSwitchButtons_default_style()}}. Default value is
+\code{"#007BFF"}.}
 
 \item{selected_color}{Text color of the label text when selected. Can be set
 globally via \code{\link[=radioSwitchButtons_default_style]{radioSwitchButtons_default_style()}}. Default value is
