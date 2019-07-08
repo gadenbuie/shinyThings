@@ -7,5 +7,5 @@ test_that("dropdownButton module works", {
   skip_if_not(shinytest::dependenciesInstalled())
 
   appdir <- system.file("examples", "dropdownButton", package = "shinyThings")
-  expect_pass(testApp(appdir))
+  expect_pass(testApp(appdir, compareImages = FALSE))
 })
