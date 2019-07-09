@@ -23,7 +23,7 @@ $(document).on("click", ".shinythings-btn-group > .btn", function(evt) {
 var shinythingsGroupBinding = new Shiny.InputBinding();
 $.extend(shinythingsGroupBinding, {
   find: function find(scope) {
-    return scope.querySelectorAll(".shinythings-btn-group[id]");
+    return $(scope).find(".shinythings-btn-group[id]");
   },
   //getType: (el) => "shinythings.buttonGroup",
   getValue: function getValue(el) {

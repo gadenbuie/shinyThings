@@ -9,7 +9,7 @@ var shinythingsRadioSwitchBinding = new Shiny.InputBinding();
 
 $.extend(shinythingsRadioSwitchBinding, {
   find: function find(scope) {
-    return scope.querySelectorAll(".shinythings-radio-inputs[id]");
+    return $(scope).find(".shinythings-radio-inputs[id]");
   },
   getValue: function getValue(el) {
     var value = $(el).find("input:checked").val();
