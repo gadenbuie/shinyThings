@@ -25,7 +25,7 @@ radioSwitchButtons <- function(
   inputId,
   label = NULL,
   choices,
-  choice_labels = names(choices),
+  choice_labels = names(choices) %||% choices,
   selected = choices[1],
   selected_background = NULL,
   selected_color = NULL,
@@ -43,6 +43,9 @@ radioSwitchButtons <- function(
   selected <- restoreInput(inputId, selected)
   if (!is.null(selected)) {
     stopifnot(!any(is.na(selected)))
+    if (!any(selected %in% choices)) {
+      warning("`selected` does not match any items in `choices`")
+    }
     if (length(selected) > 1) {
       warning("Only one choice may be selected, using first")
       selected <- selected[1]
