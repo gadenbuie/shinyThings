@@ -1,0 +1,30 @@
+{
+  "input": {
+    "._bookmark_": 0,
+    "button_checkbox": [
+      "eleven",
+      "will",
+      "mike"
+    ],
+    "button_html": null,
+    "button_icon": null,
+    "button_init": [
+      "eleven",
+      "mike",
+      "lucas"
+    ],
+    "button_radio": "lucas",
+    "button_style": null
+  },
+  "output": {
+    "chosen_checkbox": "[1] \"eleven\" \"will\"   \"mike\"  ",
+    "chosen_html": "NULL",
+    "chosen_icon": "NULL",
+    "chosen_init": "[1] \"eleven\" \"mike\"   \"lucas\" ",
+    "chosen_radio": "[1] \"lucas\"",
+    "chosen_style": "NULL"
+  },
+  "export": {
+
+  }
+}

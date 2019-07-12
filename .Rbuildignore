@@ -3,3 +3,6 @@
 ^README\.Rmd$
 ^shinyThings\.Rproj$
 ^\.Rproj\.user$
+^inst/examples/pager/tests/test-pager-expected$
+^inst/examples/buttonGroup/tests/buttonGroupTest-expected$
+^inst/examples/dropdownButton/tests/test-dropdownButton-expected$

@@ -1,0 +1,15 @@
+{
+  "input": {
+    "make_yes": 0,
+    "other": "maybe",
+    "simple": "no",
+    "small": "bold",
+    "std": "no"
+  },
+  "output": {
+    "values": "List of 4\n $ radioButtons      : chr \"no\"\n $ radioSwitchButtons: chr \"no\"\n $ moreThanTwo       : chr \"maybe\"\n $ style             : chr \"bold\""
+  },
+  "export": {
+
+  }
+}

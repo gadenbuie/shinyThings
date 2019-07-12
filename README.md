@@ -3,6 +3,12 @@
 
 # shinyThings
 
+**shinyThings** is a collection of reusable
+[Shiny](https://shiny.rstudio.com) components (modules and inputs).
+
+> My personal DRY landing point for [Shiny](https://shiny.rstudio.com)
+> bits I’ve used in my projects.
+
 ## Installation
 
 You can install shinyThings from Github via
@@ -14,12 +20,27 @@ remotes::install_github("gadenbuie/shinyThings")
 
 ## Components
 
+  - [Dropdown Buttons](#dropdownbutton)
+  - [Pagination UI](#pagination)
+  - [Toggle Button Groups](#toggle-button-groups)
+  - [Radio Switch Buttons](#radio-switch-buttons)
+
 ### dropdownButton
 
-Implements [Bootstrap 3 Button
-Dropdowns](https://getbootstrap.com/docs/3.3/components/#btn-dropdowns).
-
 ![](man/figures/README-dropdownButton-example.png)
+
+Implements [Bootstrap 3 Button
+Dropdowns](https://getbootstrap.com/docs/3.3/components/#btn-dropdowns)
+using Shiny modules.
+
+``` r
+# Try it out
+shinyThings::buttonGroupDemo()
+```
+
+<details>
+
+<summary>Demo Code</summary>
 
 ``` r
 button_options <- c(
@@ -53,12 +74,24 @@ server <- function(input, output) {
 }
 ```
 
+</details>
+
 ## Pagination
 
-Implements [Bootstrap 3 pagination and
-pagers](https://getbootstrap.com/docs/3.3/components/#pagination).
-
 ![](man/figures/README-pager-example.png)
+
+Implements [Bootstrap 3 pagination and
+pagers](https://getbootstrap.com/docs/3.3/components/#pagination) using
+Shiny modules.
+
+``` r
+# Try it out
+shinyThings::pagerDemo()
+```
+
+<details>
+
+<summary>Demo Code</summary>
 
 ``` r
 ui <- fluidPage(
@@ -110,3 +143,148 @@ server <- function(input, output) {
   })
 }
 ```
+
+</details>
+
+### Toggle Button Groups
+
+![](man/figures/README-buttonGroup-example.png)
+
+Implements groups of toggle buttons using [Bootstrap 3 button
+toolbars](https://getbootstrap.com/docs/3.3/components/#btn-groups) as a
+Shiny input. Each button can be toggled **on** or **off**, and the group
+may be limited to a single **on** button at a time, or multiple active
+buttons. (For one-button-always-selected behavior, see [radio switch
+buttons](#radio-switch-buttons) below.)
+
+``` r
+# Try it out
+shinyThings::buttonGroupDemo()
+
+# UI Side
+shinyThings::buttonGroup("input-id", choices = letters[1:3])
+
+# Server Side
+shinyThings::updateButtonGroupValue("input-id", values = "b")
+```
+
+<details>
+
+<summary>Demo Code</summary>
+
+``` r
+library(shiny)
+
+ui <- fluidPage(
+  titlePanel("shinyThings Toggle Button Groups"),
+  fluidRow(
+    column(
+      width = 6,
+      tags$h4("Buttons with icons"),
+      shinyThings::buttonGroup(
+        inputId = "button_icon",
+        choices = c("left", "center", "justify", "right"),
+        btn_icon = paste0("align-", c("left", "center", "justify", "right")),
+        multiple = FALSE
+      ),
+      tags$p(),
+      verbatimTextOutput("chosen_icon")
+    ),
+    column(
+      width = 6,
+      tags$h4("Buttons with HTML"),
+      shinyThings::buttonGroup(
+        inputId = "button_html",
+        choices = c("bold", "italic", "underline", "strikethrough"),
+        choice_labels = list(
+          HTML("<strong>B</strong>"),
+          HTML("<i>I</i>"),
+          HTML("<span style='text-decoration: underline'>U</span>"),
+          HTML("<del>S</del>")
+        ),
+        multiple = TRUE
+      ),
+      tags$p(),
+      verbatimTextOutput("chosen_html")
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  output$chosen_icon <- renderPrint(input$button_icon)
+  output$chosen_html <- renderPrint(input$button_html)
+}
+
+shinyApp(ui, server)
+```
+
+</details>
+
+### Radio Switch Buttons
+
+![](man/figures/README-radioSwitchButtons-example.png)
+
+Implements a button-styled version of `shiny::radioButtons()`. One
+button is always active (unless unset by the app).
+
+Adapted from CSS code by Mike Hemberger described in
+<https://thestizmedia.com/radio-buttons-as-toggle-buttons-with-css/>.
+
+``` r
+# Try it out
+shinyThings::radioSwitchButtonsDemo()
+
+# UI Side ----
+# Set Default style
+shinyThings::radioSwitchButtons_default_style(selected_background = "#00589a")
+# Create input
+shinyThings::radioSwitchButtons("input-id", choices = letters[1:5])
+
+# Server Side ----
+shinyThings::updateRadioSwitchButtons("input-id", selected = "b")
+```
+
+<details>
+
+<summary>Demo Code</summary>
+
+``` r
+library(shiny)
+library(shinyThings)
+
+ui <- fluidPage(
+  inputPanel(
+    radioSwitchButtons(
+      inputId = "other",
+      label = "Yes or No?",
+      choices = c("Yes" = "yes", "No" = "no", "Maybe?" = "maybe"),
+      selected_background = "#eb1455"
+    ),
+
+    radioSwitchButtons(
+      inputId = "small",
+      label = "Style",
+      choices = c("plain", "bold", "italic"),
+      choice_labels = list(
+        tags$span(style = "font-weight: normal", "P"),
+        tags$strong("B"),
+        tags$em("I")
+      )
+    )
+  ),
+  verbatimTextOutput("values")
+)
+
+server <- function(input, output, session) {
+  output$values <- renderPrint({
+    str(list(
+      moreThanTwo = input$other,
+      style       = input$small
+    ))
+  })
+}
+
+shinyApp(ui, server)
+```
+
+</details>
