@@ -26,7 +26,7 @@ ui <- function(request) {
 
     two_col(
       tagList(
-        tags$h4("Radio Buttons"),
+        tags$h4("Radio Toggle Buttons"),
         shinyThings::buttonGroup(
           inputId = "button_radio",
           choices = button_choices

@@ -6,9 +6,9 @@
 \alias{updateButtonGroupValue}
 \title{A Bootstrap Button Group Input}
 \usage{
-buttonGroup(inputId, choices, choice_labels = names(choices),
-  btn_class = "btn-default", btn_icon = NULL, btn_extra = NULL,
-  selected = NULL, multiple = FALSE, ...)
+buttonGroup(inputId, choices, choice_labels = names(choices) \%||\%
+  choices, btn_class = "btn-default", btn_icon = NULL,
+  btn_extra = NULL, selected = NULL, multiple = FALSE, ...)
 
 buttonGroupDemo(display.mode = c("showcase", "normal", "auto"))
 

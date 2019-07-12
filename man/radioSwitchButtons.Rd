@@ -8,7 +8,7 @@
 \title{Radio Switch Buttons}
 \usage{
 radioSwitchButtons(inputId, label = NULL, choices,
-  choice_labels = names(choices), selected = choices[1],
+  choice_labels = names(choices) \%||\% choices, selected = choices[1],
   selected_background = NULL, selected_color = NULL,
   not_selected_background = NULL, not_selected_color = NULL)
 
@@ -64,7 +64,7 @@ in its \code{DESCRIPTION} file, if any.}
 }
 \description{
 This input creates a radio switch that works like \code{\link[shiny:radioButtons]{shiny::radioButtons()}}
-with the appearance of a button.
+with the appearance of a button
 }
 \section{Functions}{
 \itemize{
@@ -78,3 +78,7 @@ buttons.
 radioSwitchButtons input.
 }}
 
+\references{
+Adapted from CSS code by Mike Hemberger described in
+\url{https://thestizmedia.com/radio-buttons-as-toggle-buttons-with-css/}.
+}

@@ -49,7 +49,7 @@
 buttonGroup <- function(
   inputId,
   choices,
-  choice_labels = names(choices),
+  choice_labels = names(choices) %||% choices,
   btn_class = "btn-default",
   btn_icon = NULL,
   btn_extra = NULL,

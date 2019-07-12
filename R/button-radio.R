@@ -1,7 +1,10 @@
 #' Radio Switch Buttons
 #'
 #' This input creates a radio switch that works like [shiny::radioButtons()]
-#' with the appearance of a button.
+#' with the appearance of a button
+#'
+#' @references Adapted from CSS code by Mike Hemberger described in
+#'   <https://thestizmedia.com/radio-buttons-as-toggle-buttons-with-css/>.
 #'
 #' @param inputId The input id
 #' @param label The text to appear above the buttons (set to `NULL` for no
