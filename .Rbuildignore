@@ -6,3 +6,6 @@
 ^inst/examples/pager/tests/test-pager-expected$
 ^inst/examples/buttonGroup/tests/buttonGroupTest-expected$
 ^inst/examples/dropdownButton/tests/test-dropdownButton-expected$
+^\.travis\.yml$
+^appveyor\.yml$
+^tic\.R$
