@@ -3,6 +3,12 @@
 
 # shinyThings
 
+**shinyThings** is a collection of reusable
+[Shiny](https://shiny.rstudio.com) components (modules and inputs).
+
+> My personal DRY landing point for [Shiny](https://shiny.rstudio.com)
+> bits I’ve used in my projects.
+
 ## Installation
 
 You can install shinyThings from Github via

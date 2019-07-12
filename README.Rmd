@@ -13,7 +13,14 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
+
 # shinyThings
+
+[shiny]: https://shiny.rstudio.com
+
+**shinyThings** is a collection of reusable [Shiny] components (modules and inputs).
+
+> My personal DRY storage for [Shiny] bits I've used in my projects.
 
 ## Installation
 
