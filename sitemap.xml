@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://pkg.garrickadenbuie.com/shinyThings//index.html</loc>
+  </url>
+  <url>
+    <loc>https://pkg.garrickadenbuie.com/shinyThings//reference/buttonGroup.html</loc>
+  </url>
+  <url>
+    <loc>https://pkg.garrickadenbuie.com/shinyThings//reference/dropdownButton.html</loc>
+  </url>
+  <url>
+    <loc>https://pkg.garrickadenbuie.com/shinyThings//reference/pager.html</loc>
+  </url>
+  <url>
+    <loc>https://pkg.garrickadenbuie.com/shinyThings//reference/radioSwitchButtons.html</loc>
+  </url>
+  <url>
+    <loc>https://pkg.garrickadenbuie.com/shinyThings//reference/shinyThings-package.html</loc>
+  </url>
+</urlset>
