@@ -15,10 +15,12 @@ navbar:
     right:
     - news
     - github
+    - twitter
     - garrick
   components:
     home:
-      icon: fa-home fa-lg
+      icon: ~
+      text: Overview
       href: index.html
     reference:
       text: Reference
@@ -32,9 +34,12 @@ navbar:
       icon: fa-github fa-lg
       href: https://github.com/gadenbuie/shinyThings
     garrick:
-      icon: fa-rss-square fa-lg
+      icon: fa-home fa-lg
       href: https://garrickadenbuie.com
       title: Garrick Aden-Buie
+    twitter:
+      icon: fa-twitter fa-lg
+      href: https://twitter.com/grrrck
 
 reference:
 - title: Shiny Components

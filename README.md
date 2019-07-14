@@ -6,16 +6,16 @@
 **shinyThings** is a collection of reusable
 [Shiny](https://shiny.rstudio.com) components (modules and inputs).
 
-> My personal DRY landing point for [Shiny](https://shiny.rstudio.com)
-> bits I’ve used in my projects.
+> My personal DRY storage for [Shiny](https://shiny.rstudio.com) bits
+> I’ve used in my projects.
 
 ## Installation
 
 You can install shinyThings from Github via
 
 ``` r
-# install.packages("remotes")
-remotes::install_github("gadenbuie/shinyThings")
+# install.packages("devtools")
+devtools::install_github("gadenbuie/shinyThings")
 ```
 
 ## Components
