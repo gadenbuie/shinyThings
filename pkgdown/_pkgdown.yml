@@ -4,10 +4,6 @@ authors:
   Garrick Aden-Buie:
     href: https://www.garrickadenbuie.com
 
-template:
-  params:
-    bootswatch: cosmo
-
 navbar:
   structure:
     left:

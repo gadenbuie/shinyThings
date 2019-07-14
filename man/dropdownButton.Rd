@@ -15,7 +15,7 @@ dropdownButtonDemo(display.mode = c("showcase", "normal", "auto"))
 }
 \arguments{
 \item{id}{The shared \code{id} of the \code{dropdownButtonUI()} and the
-\code{drpodownButton()} module}
+\code{dropdownButton()} module}
 
 \item{options}{A named vector of options and labels. The name is the label
 that will appear on the button and the value is the id of the input that is

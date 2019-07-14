@@ -1,7 +1,7 @@
 #' @describeIn dropdownButton Creates the dropdown button UI.
 #'
 #' @param id The shared `id` of the `dropdownButtonUI()` and the
-#'   `drpodownButton()` module
+#'   `dropdownButton()` module
 #' @param options A named vector of options and labels. The name is the label
 #'   that will appear on the button and the value is the id of the input that is
 #'   returned from the Shiny modules.
