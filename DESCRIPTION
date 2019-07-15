@@ -1,6 +1,6 @@
 Package: shinyThings
 Title: Reusable Shiny Modules and Other Shiny Things
-Version: 0.3.0
+Version: 0.3.0.9000
 Authors@R: 
     person(given = "Garrick",
            family = "Aden-Buie",
