@@ -23,7 +23,7 @@ Imports:
 Suggests: 
     shinytest (>= 1.3.0),
     spelling,
-    testthat
+    testthat (>= 2.1.0)
 Encoding: UTF-8
 Language: en-US
 LazyData: true

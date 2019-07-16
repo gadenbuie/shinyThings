@@ -18,7 +18,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Garrick Aden-Buie \email{garrick@adenbuie.com}
+\strong{Maintainer}: Garrick Aden-Buie \email{garrick@adenbuie.com} (0000-0002-7111-0077)
 
 }
 \keyword{internal}

@@ -42,11 +42,14 @@ navbar:
       href: https://twitter.com/grrrck
 
 reference:
-- title: Shiny Components
+- title: Shiny Inputs
+  desc: ~
+  contents:
+  - '`buttonGroup`'
+  - '`radioSwitchButtons`'
+- title: Shiny Modules
   desc: ~
   contents:
   - '`dropdownButtonUI`'
   - '`pager`'
-  - '`buttonGroup`'
-  - '`radioSwitchButtons`'
-  - '`history`'
+  - '`undoHistory`'

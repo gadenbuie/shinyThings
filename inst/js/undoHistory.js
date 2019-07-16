@@ -13,4 +13,4 @@ function toggleHistoryButtonState (state) {
   }
 }
 
-Shiny.addCustomMessageHandler('historyButtons', toggleHistoryButtonState);
+Shiny.addCustomMessageHandler('undoHistoryButtons', toggleHistoryButtonState);
