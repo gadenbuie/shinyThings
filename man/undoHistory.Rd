@@ -57,7 +57,7 @@ in its \code{DESCRIPTION} file, if any.}
 This is a simple Shiny module for undo/redo history. The Shiny module accepts
 an arbitrary reactive data value. Changes in the state of this reactive value
 are tracked and added to the user's history. The user can then repeatedly
-undo and redo to walk through this stack. The module returns the currrent
+undo and redo to walk through this stack. The module returns the current
 selected value of the reactive from this historical stack, or \code{NULL} when
 the app state was changed by the user. Because this reactive can hold
 arbitrary data about the state of the Shiny app, it is up to the app
