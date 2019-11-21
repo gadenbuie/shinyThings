@@ -177,12 +177,6 @@ undoHistoryModule <- function(
 ) {
   ns <- session$ns
 
-  ref_time <- as.integer(Sys.time())
-
-  abs_time <- function(rel_time) {
-    abs_time <- as.integer(rel_time) + ref_time
-    as.POSIXct(abs_time, origin = "1970-01-01")
-  }
 
   # changes in record get pushed to top of `stack$history`
   # if the user backs into historical values,
@@ -196,6 +190,7 @@ undoHistoryModule <- function(
   value_debounced <- shiny::debounce(value, value_debounce_rate)
 
   # Add updates to value_debounced() into the stack$history
+  ref_id <- 0L
   observe({
     req(!is.null(value_debounced()))
     current_value <- isolate(stack$current)
@@ -205,9 +200,9 @@ undoHistoryModule <- function(
       return()
     }
     dbg(id = ns(""), "Adding new value from app to stack$history")
-    now <- paste(as.integer(Sys.time()) - ref_time)
     this <- list()
-    this[[now]] <- value_debounced()
+    ref_id <<- ref_id + 1L
+    this[[paste(ref_id)]] <- value_debounced()
     stack$history <- c(this, isolate(stack$history))
     stack$future <- list()
     stack$current <- NULL
@@ -243,8 +238,8 @@ undoHistoryModule <- function(
   })
 
   restore_stack_item <- function(item) {
-    timestamp <- names(item)[1] %>% abs_time()
-    dbg(id = ns(""), "Restoring previous state from ", timestamp)
+    ref_id <- names(item)[1]
+    dbg(id = ns(""), "Restoring previous state number ", ref_id)
 
     stack$current <- item[[1]]
   }
