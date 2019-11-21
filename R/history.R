@@ -153,8 +153,8 @@ undoHistoryUI <- function(
 #' @export
 undoHistoryUI_debug <- function(id) {
   ns <- shiny::NS(id)
-  tagList(
-    verbatimTextOutput(ns("v_stack"))
+  htmltools::tagList(
+    shiny::verbatimTextOutput(ns("v_stack"))
   )
 }
 
@@ -187,13 +187,13 @@ undoHistoryModule <- function(
   # changes in record get pushed to top of `stack$history`
   # if the user backs into historical values,
   # then they are moved to top of stack_future
-  stack <- reactiveValues(history = list(), future = list(), current = NULL)
+  stack <- shiny::reactiveValues(history = list(), future = list(), current = NULL)
 
-  output$v_stack <- renderPrint({
-    str(reactiveValuesToList(stack))
+  output$v_stack <- shiny::renderPrint({
+    utils::str(shiny::reactiveValuesToList(stack))
   })
 
-  value_debounced <- debounce(value, value_debounce_rate)
+  value_debounced <- shiny::debounce(value, value_debounce_rate)
 
   # Add updates to value_debounced() into the stack$history
   observe({
@@ -254,7 +254,7 @@ undoHistoryModule <- function(
     req(length(stack$history) > 1)
 
     # copy stack to save all changes at once at the end
-    .stack <- reactiveValuesToList(stack)
+    .stack <- shiny::reactiveValuesToList(stack)
     .stack$current <- NULL
 
     # current value goes to the future stack
@@ -273,7 +273,7 @@ undoHistoryModule <- function(
   observeEvent(input$history_forward, {
     req(length(stack$history) > 0, length(stack$future) > 0)
 
-    .stack <- reactiveValuesToList(stack)
+    .stack <- shiny::reactiveValuesToList(stack)
     .stack$current <- NULL
 
     # top of future stack goes to top of history stack

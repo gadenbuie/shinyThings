@@ -19,6 +19,7 @@ Imports:
     shiny (>= 0.13.0),
     shinyjs (>=
         0.4.0),
+    utils,
     whisker
 Suggests: 
     shinytest (>= 1.3.0),
