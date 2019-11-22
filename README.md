@@ -296,7 +296,7 @@ A Shiny module for undo/redo history.
 The Shiny module accepts an arbitrary reactive data value. 
 Changes in the state of this reactive value are tracked and added to the user's history. 
 The user can then repeatedly undo and redo to walk through this stack. 
-The module returns the currrent selected value of the reactive from this historical stack, 
+The module returns the current selected value of the reactive from this historical stack, 
 or `NULL` when the app state was changed by the user.
 
 ``` r
