@@ -2,6 +2,7 @@ library(shinytest)
 
 test_that("history module works", {
   skip_on_cran()
+  skip_on_travis()
   skip_if_not(shinytest::dependenciesInstalled())
 
   appdir <- system.file("examples", "history", package = "shinyThings")
