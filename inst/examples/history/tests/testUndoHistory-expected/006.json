@@ -1,0 +1,14 @@
+{
+  "input": {
+    "hist-history_back": 4,
+    "hist-history_forward": 3,
+    "text": "b"
+  },
+  "output": {
+    "hist-v_stack": "List of 3\n $ history:List of 3\n  ..$ 3: chr \"b\"\n  ..$ 2: chr \"a\"\n  ..$ 1: chr \"\"\n $ future : Named list()\n $ current: chr \"b\"",
+    "v": "[1] \"b\""
+  },
+  "export": {
+
+  }
+}

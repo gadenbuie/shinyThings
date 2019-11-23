@@ -30,7 +30,7 @@ HTML if wrapped in \code{HTML()}. Set to \code{""} or \code{NULL} for no label.}
 vector of button classes for each button (must be same length as
 \code{choices}). For more information see
 \url{https://getbootstrap.com/docs/3.3/css/#buttons}. The default button class
-is, appropriately, \code{"btn-default"}. Be sure to incldue this or a similar
+is, appropriately, \code{"btn-default"}. Be sure to include this or a similar
 button style class if you modify \code{btn_class}.}
 
 \item{btn_icon}{An single icon name or a vector of icon names (must be the

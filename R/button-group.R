@@ -14,7 +14,7 @@
 #'   vector of button classes for each button (must be same length as
 #'   `choices`). For more information see
 #'   <https://getbootstrap.com/docs/3.3/css/#buttons>. The default button class
-#'   is, appropriately, `"btn-default"`. Be sure to incldue this or a similar
+#'   is, appropriately, `"btn-default"`. Be sure to include this or a similar
 #'   button style class if you modify `btn_class`.
 #' @param btn_icon An single icon name or a vector of icon names (must be the
 #'   same length as `choices`) to be applied to the buttons. See [shiny::icon()]

@@ -96,6 +96,7 @@ dropdownButtonModule <- function(input, output, session, options) {
   ns <- session$ns
 
   if (!inherits(options, "reactive")) options <- reactiveVal(options)
+  prev_state <- NULL
   observe({
     prev_state <<- stats::setNames(rep(0L, length(options())), names(options()))
   })

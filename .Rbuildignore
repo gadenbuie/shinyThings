@@ -9,3 +9,5 @@
 ^\.travis\.yml$
 ^appveyor\.yml$
 ^tic\.R$
+^docs$
+^pkgdown$

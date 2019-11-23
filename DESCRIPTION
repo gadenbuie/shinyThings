@@ -1,6 +1,6 @@
 Package: shinyThings
 Title: Reusable Shiny Modules and Other Shiny Things
-Version: 0.3.0
+Version: 0.3.0.9000
 Authors@R: 
     person(given = "Garrick",
            family = "Aden-Buie",
@@ -19,11 +19,12 @@ Imports:
     shiny (>= 0.13.0),
     shinyjs (>=
         0.4.0),
+    utils,
     whisker
 Suggests: 
     shinytest (>= 1.3.0),
     spelling,
-    testthat
+    testthat (>= 2.1.0)
 Encoding: UTF-8
 Language: en-US
 LazyData: true
