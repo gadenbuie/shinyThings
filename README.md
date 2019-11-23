@@ -24,7 +24,7 @@ devtools::install_github("gadenbuie/shinyThings")
 - [Pagination UI](#pagination)
 - [Toggle Button Groups](#toggle-button-groups)
 - [Radio Switch Buttons](#radio-switch-buttons)
-- [Undo/Redo History](#undo-redo-history)
+- [Undo/Redo History](#undoredo-history)
 
 ### dropdownButton
 
@@ -290,7 +290,7 @@ shinyApp(ui, server)
 
 </details>
 
-### Undo/Redo History {#undo-redo-history}
+### Undo/Redo History
 
 A Shiny module for undo/redo history. 
 The Shiny module accepts an arbitrary reactive data value. 
