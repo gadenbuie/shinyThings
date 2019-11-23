@@ -61,29 +61,29 @@ dropdown_buttons <- function(input_id, text, ns) {
 #' - server: [dropdownButton()]
 #'
 #' @examples
-#' \dontrun{
-#' library(shiny)
+#' if (interactive()) {
+#'   library(shiny)
 #'
-#' button_options <- c(
-#'   "Option A" = "opt_a",
-#'   "Option B" = "opt_b"
-#' )
+#'   button_options <- c(
+#'     "Option A" = "opt_a",
+#'     "Option B" = "opt_b"
+#'   )
 #'
-#' ui <- fluidPage(
-#'   dropdownButtonUI(
-#'     id = "dropdown",
-#'     options = button_options,
-#'     label = "Options"
-#'   ),
-#'   verbatimTextOutput("chosen")
-#' )
+#'   ui <- fluidPage(
+#'     dropdownButtonUI(
+#'       id = "dropdown",
+#'       options = button_options,
+#'       label = "Options"
+#'     ),
+#'     verbatimTextOutput("chosen")
+#'   )
 #'
-#' server <- function(input, output) {
-#'   last_clicked <- dropdownButton("dropdown", button_options)
-#'   output$chosen <- renderPrint({ last_clicked() })
-#' }
+#'   server <- function(input, output) {
+#'     last_clicked <- dropdownButton("dropdown", button_options)
+#'     output$chosen <- renderPrint({ last_clicked() })
+#'   }
 #'
-#' shinyApp(ui = ui, server = server)
+#'   shinyApp(ui = ui, server = server)
 #' }
 #' @inheritParams dropdownButtonUI
 #' @family dropdownButton

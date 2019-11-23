@@ -89,3 +89,51 @@ input.
 must match the values in \code{choices} provided to \code{buttonGroup()}.
 }}
 
+\examples{
+if (interactive()) {
+library(shiny)
+
+ui <- fluidPage(
+  titlePanel("shinyThings Toggle Button Groups"),
+  fluidRow(
+    column(
+      width = 6,
+      tags$h4("Buttons with icons"),
+      shinyThings::buttonGroup(
+        inputId = "button_icon",
+        choices = c("left", "center", "justify", "right"),
+        btn_icon = paste0("align-", c("left", "center", "justify", "right")),
+        multiple = FALSE
+      ),
+      tags$p(),
+      verbatimTextOutput("chosen_icon")
+    ),
+    column(
+      width = 6,
+      tags$h4("Buttons with HTML"),
+      shinyThings::buttonGroup(
+        inputId = "button_html",
+        choices = c("bold", "italic", "underline", "strikethrough"),
+        choice_labels = list(
+          HTML("<strong>B</strong>"),
+          HTML("<i>I</i>"),
+          HTML("<span style='text-decoration: underline'>U</span>"),
+          HTML("<del>S</del>")
+        ),
+        multiple = TRUE
+      ),
+      tags$p(),
+      verbatimTextOutput("chosen_html")
+    )
+  )
+)
+
+server <- function(input, output, session) {
+  output$chosen_icon <- renderPrint(input$button_icon)
+  output$chosen_html <- renderPrint(input$button_html)
+}
+
+shinyApp(ui, server)
+}
+
+}

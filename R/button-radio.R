@@ -6,6 +6,46 @@
 #' @references Adapted from CSS code by Mike Hemberger described in
 #'   <https://thestizmedia.com/radio-buttons-as-toggle-buttons-with-css/>.
 #'
+#' @examples
+#' if (interactive()) {
+#' library(shiny)
+#' library(shinyThings)
+#'
+#' ui <- fluidPage(
+#'   inputPanel(
+#'     radioSwitchButtons(
+#'       inputId = "other",
+#'       label = "Yes or No?",
+#'       choices = c("Yes" = "yes", "No" = "no", "Maybe?" = "maybe"),
+#'       selected_background = "#eb1455"
+#'     ),
+#'
+#'     radioSwitchButtons(
+#'       inputId = "small",
+#'       label = "Style",
+#'       choices = c("plain", "bold", "italic"),
+#'       choice_labels = list(
+#'         tags$span(style = "font-weight: normal", "P"),
+#'         tags$strong("B"),
+#'         tags$em("I")
+#'       )
+#'     )
+#'   ),
+#'   verbatimTextOutput("values")
+#' )
+#'
+#' server <- function(input, output, session) {
+#'   output$values <- renderPrint({
+#'     str(list(
+#'       moreThanTwo = input$other,
+#'       style       = input$small
+#'     ))
+#'   })
+#' }
+#'
+#' shinyApp(ui, server)
+#' }
+#'
 #' @param inputId The input id
 #' @param label The text to appear above the buttons (set to `NULL` for no
 #'   label.)
