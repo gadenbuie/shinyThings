@@ -2,6 +2,7 @@ library(shiny)
 library(shinyThings)
 
 ui <- fluidPage(
+  tags$head(tags$style(HTML("body { margin: 1em auto; max-width: 600px; }"))),
   # Add the Undo/Redo buttons to the UI
   undoHistoryUI("hist", back_text = "Step Backward", fwd_text = "Step Forward"),
 
@@ -10,7 +11,14 @@ ui <- fluidPage(
 
   # Debugging elements for the demo
   verbatimTextOutput("v"),
-  tags$h4("debug"),
+  tags$h4("Debug"),
+  tags$p(
+    "You can enable the debug view by including",
+    tags$code("undoHistoryUI_debug('module_id')"),
+    "in your UI. It shows the undo history stack, the current selected state,",
+    "if the user moves backward or forward in the stack, and the \"future\"",
+    "states if the user can step forward."
+  ),
   undoHistoryUI_debug("hist")
 )
 

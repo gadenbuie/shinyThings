@@ -37,6 +37,7 @@ devtools::install_github("gadenbuie/shinyThings")
 - [Pagination UI](#pagination)
 - [Toggle Button Groups](#toggle-button-groups)
 - [Radio Switch Buttons](#radio-switch-buttons)
+- [Undo/Redo History](#undoredo-history)
 
 ### dropdownButton
 
@@ -285,3 +286,42 @@ shinyApp(ui, server)
 ```
 
 </details>
+
+### Undo/Redo History
+
+![](man/figures/README-undo-history.gif)
+
+A Shiny module for undo/redo history. 
+The Shiny module accepts an arbitrary reactive data value. 
+Changes in the state of this reactive value are tracked and added to the user's history. 
+The user can then repeatedly undo and redo to walk through this stack. 
+The module returns the current selected value of the reactive from this historical stack, 
+or `NULL` when the app state was changed by the user.
+
+``` r
+# Try it out
+shinyThings::undoHistoryDemo()
+
+# UI Side ----
+# UI with undo/redo buttons
+undoHistoryUI("module-id")
+
+# Server Side ----
+# Create a reactive value whose state will be tracked. Note that you control 
+# the structure of the data being tracked and also how the data will be 
+# restored. `undo_app_state` will have the same structure.
+undo_app_state <- undoHistory("module-id", value = reactive({
+  list(
+    text = input$a_text_input_id,
+    selected = input$a_select_input_id
+  )
+}))
+
+# Use an observer to update inputs as required as the user steps through the
+# undo/redo history stack.
+observe({
+  req(!is.null(undo_app_state))
+  updateTextInput(session, "a_text_input_id", value = undo_app_state()$text)
+  updateSelectInput(session, "a_select_input_id", selected = undo_app_state()$selected)
+})
+```

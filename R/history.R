@@ -74,6 +74,11 @@
 #' @param value_debounce_rate Debounce rate in milliseconds for the `value`
 #'   reactive expression. To avoid saving spurious changes in `value`, the
 #'   expression is debounced. See [shiny::debounce()] for more information.
+#'
+#' @return The `undoHistory()` module returns the currently selected history
+#'   item as the user moves through the stack, or `NULL` if the last update
+#'   was the result of user input. The returned value has the same structure as
+#'   the reactive `value` passed to `undoHistory()`.
 #' @export
 undoHistory <- function(id, value, value_debounce_rate = 500) {
   shiny::callModule(
@@ -184,7 +189,7 @@ undoHistoryModule <- function(
   stack <- shiny::reactiveValues(history = list(), future = list(), current = NULL)
 
   output$v_stack <- shiny::renderPrint({
-    utils::str(shiny::reactiveValuesToList(stack)[c("history", "future", "current")])
+    utils::str(shiny::reactiveValuesToList(stack)[c("history", "current", "future")])
   })
 
   value_debounced <- shiny::debounce(value, value_debounce_rate)

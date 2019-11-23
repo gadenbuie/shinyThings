@@ -53,6 +53,12 @@ application. If set to \code{"normal"}, displays the application normally.
 Defaults to \code{"auto"}, which displays the application in the mode given
 in its \code{DESCRIPTION} file, if any.}
 }
+\value{
+The \code{undoHistory()} module returns the currently selected history
+item as the user moves through the stack, or \code{NULL} if the last update
+was the result of user input. The returned value has the same structure as
+the reactive \code{value} passed to \code{undoHistory()}.
+}
 \description{
 This is a simple Shiny module for undo/redo history. The Shiny module accepts
 an arbitrary reactive data value. Changes in the state of this reactive value

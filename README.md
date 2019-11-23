@@ -20,11 +20,11 @@ devtools::install_github("gadenbuie/shinyThings")
 
 ## Components
 
-- [Dropdown Buttons](#dropdownbutton)
-- [Pagination UI](#pagination)
-- [Toggle Button Groups](#toggle-button-groups)
-- [Radio Switch Buttons](#radio-switch-buttons)
-- [Undo/Redo History](#undoredo-history)
+  - [Dropdown Buttons](#dropdownbutton)
+  - [Pagination UI](#pagination)
+  - [Toggle Button Groups](#toggle-button-groups)
+  - [Radio Switch Buttons](#radio-switch-buttons)
+  - [Undo/Redo History](#undoredo-history)
 
 ### dropdownButton
 
@@ -292,11 +292,13 @@ shinyApp(ui, server)
 
 ### Undo/Redo History
 
-A Shiny module for undo/redo history. 
-The Shiny module accepts an arbitrary reactive data value. 
-Changes in the state of this reactive value are tracked and added to the user's history. 
-The user can then repeatedly undo and redo to walk through this stack. 
-The module returns the current selected value of the reactive from this historical stack, 
+![](man/figures/README-undo-history.gif)
+
+A Shiny module for undo/redo history. The Shiny module accepts an
+arbitrary reactive data value. Changes in the state of this reactive
+value are tracked and added to the user’s history. The user can then
+repeatedly undo and redo to walk through this stack. The module returns
+the current selected value of the reactive from this historical stack,
 or `NULL` when the app state was changed by the user.
 
 ``` r

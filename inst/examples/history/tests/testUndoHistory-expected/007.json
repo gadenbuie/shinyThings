@@ -5,7 +5,7 @@
     "text": "c"
   },
   "output": {
-    "hist-v_stack": "List of 3\n $ history:List of 3\n  ..$ 3: chr \"b\"\n  ..$ 2: chr \"a\"\n  ..$ 1: chr \"\"\n $ future : Named list()\n $ current: chr \"b\"",
+    "hist-v_stack": "List of 3\n $ history:List of 3\n  ..$ 3: chr \"b\"\n  ..$ 2: chr \"a\"\n  ..$ 1: chr \"\"\n $ current: chr \"b\"\n $ future : Named list()",
     "v": "[1] \"c\""
   },
   "export": {
