@@ -184,7 +184,7 @@ undoHistoryModule <- function(
   stack <- shiny::reactiveValues(history = list(), future = list(), current = NULL)
 
   output$v_stack <- shiny::renderPrint({
-    utils::str(shiny::reactiveValuesToList(stack))
+    utils::str(shiny::reactiveValuesToList(stack)[c("history", "future", "current")])
   })
 
   value_debounced <- shiny::debounce(value, value_debounce_rate)
