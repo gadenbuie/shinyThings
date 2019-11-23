@@ -115,11 +115,6 @@
 <p>Implements <a href="https://getbootstrap.com/docs/3.3/components/#btn-dropdowns">Bootstrap 3 Button Dropdowns</a> using Shiny modules.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Try it out</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">shinyThings<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shinyThings/man/buttonGroup.html">buttonGroupDemo</a></span>()</a></code></pre></div>
-<details><summary>Demo Code</summary>
-
-``` r
-button_options 
-</details>
 </div>
 </div>
 <div id="pagination" class="section level2">
@@ -129,16 +124,6 @@ button_options
 <p>Implements <a href="https://getbootstrap.com/docs/3.3/components/#pagination">Bootstrap 3 pagination and pagers</a> using Shiny modules.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Try it out</span></a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">shinyThings<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shinyThings/man/pager.html">pagerDemo</a></span>()</a></code></pre></div>
-<details><summary>Demo Code</summary>
-
-``` r
-ui letters):")),
-      uiOutput("paged_output")
-    )
-  )
-)
-
-server 
 <div id="toggle-button-groups" class="section level3">
 <h3 class="hasAnchor">
 <a href="#toggle-button-groups" class="anchor"></a>Toggle Button Groups</h3>
@@ -152,26 +137,6 @@ server
 <a class="sourceLine" id="cb4-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co"># Server Side</span></a>
 <a class="sourceLine" id="cb4-8" data-line-number="8">shinyThings<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shinyThings/man/buttonGroup.html">updateButtonGroupValue</a></span>(<span class="st">"input-id"</span>, <span class="dt">values =</span> <span class="st">"b"</span>)</a></code></pre></div>
-<details><summary>Demo Code</summary>
-
-``` r
-library(shiny)
-
-ui B"),
-          HTML("<i>I</i>"),
-          HTML("<span style="text-decoration: underline">U</span>"),
-          HTML("<del>S</del>")
-        ),
-        multiple = TRUE
-      ),
-      tags$p(),
-      verbatimTextOutput("chosen_html")
-    )
-  )
-)
-
-server 
-</details>
 </div>
 <div id="radio-switch-buttons" class="section level3">
 <h3 class="hasAnchor">
@@ -190,14 +155,6 @@ server
 <a class="sourceLine" id="cb5-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co"># Server Side ----</span></a>
 <a class="sourceLine" id="cb5-11" data-line-number="11">shinyThings<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shinyThings/man/radioSwitchButtons.html">updateRadioSwitchButtons</a></span>(<span class="st">"input-id"</span>, <span class="dt">selected =</span> <span class="st">"b"</span>)</a></code></pre></div>
-<details><summary>Demo Code</summary>
-
-``` r
-library(shiny)
-library(shinyThings)
-
-ui 
-</details>
 </div>
 <div id="undoredo-history" class="section level3">
 <h3 class="hasAnchor">
@@ -230,7 +187,6 @@ ui
 <a class="sourceLine" id="cb6-24" data-line-number="24">  <span class="kw">updateSelectInput</span>(session, <span class="st">"a_select_input_id"</span>, <span class="dt">selected =</span> <span class="kw">undo_app_state</span>()<span class="op">$</span>selected)</a>
 <a class="sourceLine" id="cb6-25" data-line-number="25">})</a></code></pre></div>
 </div>
-</details>
 </div>
 </div>
   </div>
