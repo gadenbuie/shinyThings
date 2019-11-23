@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reusable Shiny Modules and Other Shiny Things • shinyThings</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
 <meta property="og:title" content="Reusable Shiny Modules and Other Shiny Things">
 <meta property="og:description" content="A collection of re-usable Shiny modules that can be
@@ -20,7 +21,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-article">
+    <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -32,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">shinyThings</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
       </span>
     </div>
 
@@ -80,13 +81,9 @@
 <!--/.navbar -->
 
       
-      </header><div class="row">
-  <div class="col-md-9 contents">
-    
 
-    
-    
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+      </header><div class="row">
+  <div class="contents col-md-9">
 <div id="shinythings" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#shinythings" class="anchor"></a>shinyThings</h1></div>
@@ -109,6 +106,7 @@
 <li><a href="#pagination">Pagination UI</a></li>
 <li><a href="#toggle-button-groups">Toggle Button Groups</a></li>
 <li><a href="#radio-switch-buttons">Radio Switch Buttons</a></li>
+<li><a href="#undo-redo-history">Undo/Redo History</a></li>
 </ul>
 <div id="dropdownbutton" class="section level3">
 <h3 class="hasAnchor">
@@ -116,37 +114,11 @@
 <p><img src="reference/figures/README-dropdownButton-example.png"></p>
 <p>Implements <a href="https://getbootstrap.com/docs/3.3/components/#btn-dropdowns">Bootstrap 3 Button Dropdowns</a> using Shiny modules.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Try it out</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">shinyThings<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shinyThings/topics/buttonGroup">buttonGroupDemo</a></span>()</a></code></pre></div>
-<details><p><summary>Demo Code</summary></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">button_options &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">  <span class="st">"Eleven"</span> =<span class="st"> "eleven"</span>,</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">  <span class="st">"Will Byers"</span> =<span class="st"> "will"</span>,</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">  <span class="st">"Mike Wheeler"</span> =<span class="st"> "mike"</span>,</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">  <span class="st">"Dustin Henderson"</span> =<span class="st"> "dustin"</span>,</a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">  <span class="st">"Lucas Sinclair"</span> =<span class="st"> "lucas"</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">)</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">  <span class="kw">titlePanel</span>(<span class="st">"shinyThings Dropdown Button"</span>),</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">  <span class="kw">sidebarLayout</span>(</a>
-<a class="sourceLine" id="cb3-12" data-line-number="12">    <span class="kw">sidebarPanel</span>(</a>
-<a class="sourceLine" id="cb3-13" data-line-number="13">      shinyThings<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shinyThings/topics/dropdownButton">dropdownButtonUI</a></span>(</a>
-<a class="sourceLine" id="cb3-14" data-line-number="14">        <span class="dt">id =</span> <span class="st">"dropdown"</span>,</a>
-<a class="sourceLine" id="cb3-15" data-line-number="15">        <span class="dt">options =</span> button_options,</a>
-<a class="sourceLine" id="cb3-16" data-line-number="16">        <span class="dt">label =</span> <span class="st">"Characters"</span></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17">      )</a>
-<a class="sourceLine" id="cb3-18" data-line-number="18">    ),</a>
-<a class="sourceLine" id="cb3-19" data-line-number="19">    <span class="kw">mainPanel</span>(</a>
-<a class="sourceLine" id="cb3-20" data-line-number="20">      tags<span class="op">$</span><span class="kw">p</span>(<span class="st">"The last button pressed was ..."</span>),</a>
-<a class="sourceLine" id="cb3-21" data-line-number="21">      <span class="kw">verbatimTextOutput</span>(<span class="st">"chosen"</span>)</a>
-<a class="sourceLine" id="cb3-22" data-line-number="22">    )</a>
-<a class="sourceLine" id="cb3-23" data-line-number="23">  )</a>
-<a class="sourceLine" id="cb3-24" data-line-number="24">)</a>
-<a class="sourceLine" id="cb3-25" data-line-number="25"></a>
-<a class="sourceLine" id="cb3-26" data-line-number="26">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</a>
-<a class="sourceLine" id="cb3-27" data-line-number="27">  last_clicked &lt;-<span class="st"> </span>shinyThings<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shinyThings/topics/dropdownButton">dropdownButton</a></span>(<span class="st">"dropdown"</span>, button_options)</a>
-<a class="sourceLine" id="cb3-28" data-line-number="28">  output<span class="op">$</span>chosen &lt;-<span class="st"> </span><span class="kw">renderPrint</span>({ <span class="kw">last_clicked</span>() })</a>
-<a class="sourceLine" id="cb3-29" data-line-number="29">}</a></code></pre></div>
+<a class="sourceLine" id="cb2-2" data-line-number="2">shinyThings<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shinyThings/man/buttonGroup.html">buttonGroupDemo</a></span>()</a></code></pre></div>
+<details><summary>Demo Code</summary>
+
+``` r
+button_options 
 </details>
 </div>
 </div>
@@ -155,172 +127,109 @@
 <a href="#pagination" class="anchor"></a>Pagination</h2>
 <p><img src="reference/figures/README-pager-example.png"></p>
 <p>Implements <a href="https://getbootstrap.com/docs/3.3/components/#pagination">Bootstrap 3 pagination and pagers</a> using Shiny modules.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># Try it out</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">shinyThings<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shinyThings/topics/pager">pagerDemo</a></span>()</a></code></pre></div>
-<details><p><summary>Demo Code</summary></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">  <span class="kw">titlePanel</span>(<span class="st">"shinyThings Pagination"</span>),</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">  <span class="kw">sidebarLayout</span>(</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">    <span class="kw">sidebarPanel</span>(</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">      <span class="dt">width =</span> <span class="dv">6</span>,</a>
-<a class="sourceLine" id="cb5-6" data-line-number="6">      </a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">      tags<span class="op">$</span><span class="kw">h4</span>(<span class="st">"paginationUI()"</span>),</a>
-<a class="sourceLine" id="cb5-8" data-line-number="8">      shinyThings<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shinyThings/topics/pager">paginationUI</a></span>(<span class="st">"pager"</span>, <span class="dt">width =</span> <span class="dv">12</span>, <span class="dt">offset =</span> <span class="dv">0</span>, <span class="dt">class =</span> <span class="st">"text-center"</span>),</a>
-<a class="sourceLine" id="cb5-9" data-line-number="9">      tags<span class="op">$</span><span class="kw">hr</span>(),</a>
-<a class="sourceLine" id="cb5-10" data-line-number="10">      </a>
-<a class="sourceLine" id="cb5-11" data-line-number="11">      <span class="kw">sliderInput</span>(<span class="st">"page_break"</span>, <span class="st">"Page Size"</span>, <span class="dt">min =</span> <span class="dv">1</span>, <span class="dt">max =</span> <span class="dv">6</span>, <span class="dt">step =</span> <span class="dv">1</span>, <span class="dt">value =</span> <span class="dv">3</span>),</a>
-<a class="sourceLine" id="cb5-12" data-line-number="12">      <span class="kw">helpText</span>(tags<span class="op">$</span><span class="kw">code</span>(<span class="st">"page_break"</span>)),</a>
-<a class="sourceLine" id="cb5-13" data-line-number="13">      tags<span class="op">$</span><span class="kw">hr</span>(),</a>
-<a class="sourceLine" id="cb5-14" data-line-number="14">      </a>
-<a class="sourceLine" id="cb5-15" data-line-number="15">      tags<span class="op">$</span><span class="kw">h4</span>(<span class="st">"pagerUI()"</span>),</a>
-<a class="sourceLine" id="cb5-16" data-line-number="16">      shinyThings<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shinyThings/topics/pager">pagerUI</a></span>(<span class="st">"pager"</span>, <span class="dt">centered =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb5-17" data-line-number="17">    ),</a>
-<a class="sourceLine" id="cb5-18" data-line-number="18">    <span class="kw">mainPanel</span>(</a>
-<a class="sourceLine" id="cb5-19" data-line-number="19">      <span class="dt">width =</span> <span class="dv">6</span>,</a>
-<a class="sourceLine" id="cb5-20" data-line-number="20">      </a>
-<a class="sourceLine" id="cb5-21" data-line-number="21">      tags<span class="op">$</span><span class="kw">p</span>(<span class="st">"Page indices:"</span>),</a>
-<a class="sourceLine" id="cb5-22" data-line-number="22">      <span class="kw">verbatimTextOutput</span>(<span class="st">"page_indices"</span>),</a>
-<a class="sourceLine" id="cb5-23" data-line-number="23">      </a>
-<a class="sourceLine" id="cb5-24" data-line-number="24">      tags<span class="op">$</span><span class="kw">p</span>(<span class="kw">HTML</span>(<span class="st">"Paged output (&lt;code&gt;letters&lt;/code&gt;):"</span>)),</a>
-<a class="sourceLine" id="cb5-25" data-line-number="25">      <span class="kw">uiOutput</span>(<span class="st">"paged_output"</span>)</a>
-<a class="sourceLine" id="cb5-26" data-line-number="26">    )</a>
-<a class="sourceLine" id="cb5-27" data-line-number="27">  )</a>
-<a class="sourceLine" id="cb5-28" data-line-number="28">)</a>
-<a class="sourceLine" id="cb5-29" data-line-number="29"></a>
-<a class="sourceLine" id="cb5-30" data-line-number="30">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output) {</a>
-<a class="sourceLine" id="cb5-31" data-line-number="31">  ## page_break and n_items can be reactive or fixed values</a>
-<a class="sourceLine" id="cb5-32" data-line-number="32">  <span class="co"># page_break &lt;- 4</span></a>
-<a class="sourceLine" id="cb5-33" data-line-number="33">  <span class="co"># n_items &lt;- length(letters)</span></a>
-<a class="sourceLine" id="cb5-34" data-line-number="34">  n_items &lt;-<span class="st"> </span><span class="kw">reactiveVal</span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(letters))</a>
-<a class="sourceLine" id="cb5-35" data-line-number="35">  page_break &lt;-<span class="st"> </span><span class="kw">reactive</span>({input<span class="op">$</span>page_break})</a>
-<a class="sourceLine" id="cb5-36" data-line-number="36"></a>
-<a class="sourceLine" id="cb5-37" data-line-number="37">  page_indices &lt;-<span class="st"> </span>shinyThings<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shinyThings/topics/pager">pager</a></span>(<span class="st">"pager"</span>, n_items, page_break)</a>
-<a class="sourceLine" id="cb5-38" data-line-number="38"></a>
-<a class="sourceLine" id="cb5-39" data-line-number="39">  output<span class="op">$</span>page_indices &lt;-<span class="st"> </span><span class="kw">renderPrint</span>({</a>
-<a class="sourceLine" id="cb5-40" data-line-number="40">    <span class="kw">page_indices</span>()</a>
-<a class="sourceLine" id="cb5-41" data-line-number="41">  })</a>
-<a class="sourceLine" id="cb5-42" data-line-number="42"></a>
-<a class="sourceLine" id="cb5-43" data-line-number="43">  output<span class="op">$</span>paged_output &lt;-<span class="st"> </span><span class="kw">renderUI</span>({</a>
-<a class="sourceLine" id="cb5-44" data-line-number="44">    tags<span class="op">$</span><span class="kw">ul</span>(</a>
-<a class="sourceLine" id="cb5-45" data-line-number="45">      <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/lapply">lapply</a></span>(letters[<span class="kw">page_indices</span>()], tags<span class="op">$</span>li)</a>
-<a class="sourceLine" id="cb5-46" data-line-number="46">    )</a>
-<a class="sourceLine" id="cb5-47" data-line-number="47">  })</a>
-<a class="sourceLine" id="cb5-48" data-line-number="48">}</a></code></pre></div>
-</details><div id="toggle-button-groups" class="section level3">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Try it out</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">shinyThings<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shinyThings/man/pager.html">pagerDemo</a></span>()</a></code></pre></div>
+<details><summary>Demo Code</summary>
+
+``` r
+ui letters):")),
+      uiOutput("paged_output")
+    )
+  )
+)
+
+server 
+<div id="toggle-button-groups" class="section level3">
 <h3 class="hasAnchor">
 <a href="#toggle-button-groups" class="anchor"></a>Toggle Button Groups</h3>
 <p><img src="reference/figures/README-buttonGroup-example.png"></p>
 <p>Implements groups of toggle buttons using <a href="https://getbootstrap.com/docs/3.3/components/#btn-groups">Bootstrap 3 button toolbars</a> as a Shiny input. Each button can be toggled <strong>on</strong> or <strong>off</strong>, and the group may be limited to a single <strong>on</strong> button at a time, or multiple active buttons. (For one-button-always-selected behavior, see <a href="#radio-switch-buttons">radio switch buttons</a> below.)</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># Try it out</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">shinyThings<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shinyThings/topics/buttonGroup">buttonGroupDemo</a></span>()</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co"># UI Side</span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">shinyThings<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shinyThings/topics/buttonGroup">buttonGroup</a></span>(<span class="st">"input-id"</span>, <span class="dt">choices =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co"># Server Side</span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8">shinyThings<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shinyThings/topics/buttonGroup">updateButtonGroupValue</a></span>(<span class="st">"input-id"</span>, <span class="dt">values =</span> <span class="st">"b"</span>)</a></code></pre></div>
-<details><p><summary>Demo Code</summary></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">ui &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidPage</a></span>(</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4">  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/titlePanel">titlePanel</a></span>(<span class="st">"shinyThings Toggle Button Groups"</span>),</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5">  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidRow</a></span>(</a>
-<a class="sourceLine" id="cb7-6" data-line-number="6">    <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/column">column</a></span>(</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">      <span class="dt">width =</span> <span class="dv">6</span>,</a>
-<a class="sourceLine" id="cb7-8" data-line-number="8">      tags<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/builder">h4</a></span>(<span class="st">"Buttons with icons"</span>),</a>
-<a class="sourceLine" id="cb7-9" data-line-number="9">      shinyThings<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shinyThings/topics/buttonGroup">buttonGroup</a></span>(</a>
-<a class="sourceLine" id="cb7-10" data-line-number="10">        <span class="dt">inputId =</span> <span class="st">"button_icon"</span>,</a>
-<a class="sourceLine" id="cb7-11" data-line-number="11">        <span class="dt">choices =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"left"</span>, <span class="st">"center"</span>, <span class="st">"justify"</span>, <span class="st">"right"</span>),</a>
-<a class="sourceLine" id="cb7-12" data-line-number="12">        <span class="dt">btn_icon =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste0</a></span>(<span class="st">"align-"</span>, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"left"</span>, <span class="st">"center"</span>, <span class="st">"justify"</span>, <span class="st">"right"</span>)),</a>
-<a class="sourceLine" id="cb7-13" data-line-number="13">        <span class="dt">multiple =</span> <span class="ot">FALSE</span></a>
-<a class="sourceLine" id="cb7-14" data-line-number="14">      ),</a>
-<a class="sourceLine" id="cb7-15" data-line-number="15">      tags<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/builder">p</a></span>(),</a>
-<a class="sourceLine" id="cb7-16" data-line-number="16">      <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/verbatimTextOutput">verbatimTextOutput</a></span>(<span class="st">"chosen_icon"</span>)</a>
-<a class="sourceLine" id="cb7-17" data-line-number="17">    ),</a>
-<a class="sourceLine" id="cb7-18" data-line-number="18">    <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/column">column</a></span>(</a>
-<a class="sourceLine" id="cb7-19" data-line-number="19">      <span class="dt">width =</span> <span class="dv">6</span>,</a>
-<a class="sourceLine" id="cb7-20" data-line-number="20">      tags<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/builder">h4</a></span>(<span class="st">"Buttons with HTML"</span>),</a>
-<a class="sourceLine" id="cb7-21" data-line-number="21">      shinyThings<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shinyThings/topics/buttonGroup">buttonGroup</a></span>(</a>
-<a class="sourceLine" id="cb7-22" data-line-number="22">        <span class="dt">inputId =</span> <span class="st">"button_html"</span>,</a>
-<a class="sourceLine" id="cb7-23" data-line-number="23">        <span class="dt">choices =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"bold"</span>, <span class="st">"italic"</span>, <span class="st">"underline"</span>, <span class="st">"strikethrough"</span>),</a>
-<a class="sourceLine" id="cb7-24" data-line-number="24">        <span class="dt">choice_labels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
-<a class="sourceLine" id="cb7-25" data-line-number="25">          <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/HTML">HTML</a></span>(<span class="st">"&lt;strong&gt;B&lt;/strong&gt;"</span>),</a>
-<a class="sourceLine" id="cb7-26" data-line-number="26">          <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/HTML">HTML</a></span>(<span class="st">"&lt;i&gt;I&lt;/i&gt;"</span>),</a>
-<a class="sourceLine" id="cb7-27" data-line-number="27">          <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/HTML">HTML</a></span>(<span class="st">"&lt;span style='text-decoration: underline'&gt;U&lt;/span&gt;"</span>),</a>
-<a class="sourceLine" id="cb7-28" data-line-number="28">          <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/HTML">HTML</a></span>(<span class="st">"&lt;del&gt;S&lt;/del&gt;"</span>)</a>
-<a class="sourceLine" id="cb7-29" data-line-number="29">        ),</a>
-<a class="sourceLine" id="cb7-30" data-line-number="30">        <span class="dt">multiple =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb7-31" data-line-number="31">      ),</a>
-<a class="sourceLine" id="cb7-32" data-line-number="32">      tags<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/builder">p</a></span>(),</a>
-<a class="sourceLine" id="cb7-33" data-line-number="33">      <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/verbatimTextOutput">verbatimTextOutput</a></span>(<span class="st">"chosen_html"</span>)</a>
-<a class="sourceLine" id="cb7-34" data-line-number="34">    )</a>
-<a class="sourceLine" id="cb7-35" data-line-number="35">  )</a>
-<a class="sourceLine" id="cb7-36" data-line-number="36">)</a>
-<a class="sourceLine" id="cb7-37" data-line-number="37"></a>
-<a class="sourceLine" id="cb7-38" data-line-number="38">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
-<a class="sourceLine" id="cb7-39" data-line-number="39">  output<span class="op">$</span>chosen_icon &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/renderPrint">renderPrint</a></span>(input<span class="op">$</span>button_icon)</a>
-<a class="sourceLine" id="cb7-40" data-line-number="40">  output<span class="op">$</span>chosen_html &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/renderPrint">renderPrint</a></span>(input<span class="op">$</span>button_html)</a>
-<a class="sourceLine" id="cb7-41" data-line-number="41">}</a>
-<a class="sourceLine" id="cb7-42" data-line-number="42"></a>
-<a class="sourceLine" id="cb7-43" data-line-number="43"><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/shinyApp">shinyApp</a></span>(ui, server)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># Try it out</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">shinyThings<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shinyThings/man/buttonGroup.html">buttonGroupDemo</a></span>()</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co"># UI Side</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">shinyThings<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shinyThings/man/buttonGroup.html">buttonGroup</a></span>(<span class="st">"input-id"</span>, <span class="dt">choices =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>])</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co"># Server Side</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">shinyThings<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shinyThings/man/buttonGroup.html">updateButtonGroupValue</a></span>(<span class="st">"input-id"</span>, <span class="dt">values =</span> <span class="st">"b"</span>)</a></code></pre></div>
+<details><summary>Demo Code</summary>
+
+``` r
+library(shiny)
+
+ui B"),
+          HTML("<i>I</i>"),
+          HTML("<span style="text-decoration: underline">U</span>"),
+          HTML("<del>S</del>")
+        ),
+        multiple = TRUE
+      ),
+      tags$p(),
+      verbatimTextOutput("chosen_html")
+    )
+  )
+)
+
+server 
 </details>
 </div>
 <div id="radio-switch-buttons" class="section level3">
 <h3 class="hasAnchor">
 <a href="#radio-switch-buttons" class="anchor"></a>Radio Switch Buttons</h3>
 <p><img src="reference/figures/README-radioSwitchButtons-example.png"></p>
-<p>Implements a button-styled version of <code><a href="https://www.rdocumentation.org/packages/shiny/topics/radioButtons">shiny::radioButtons()</a></code>. One button is always active (unless unset by the app).</p>
+<p>Implements a button-styled version of <code><a href="https://rdrr.io/pkg/shiny/man/radioButtons.html">shiny::radioButtons()</a></code>. One button is always active (unless unset by the app).</p>
 <p>Adapted from CSS code by Mike Hemberger described in <a href="https://thestizmedia.com/radio-buttons-as-toggle-buttons-with-css/" class="uri">https://thestizmedia.com/radio-buttons-as-toggle-buttons-with-css/</a>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># Try it out</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">shinyThings<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shinyThings/topics/radioSwitchButtons">radioSwitchButtonsDemo</a></span>()</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co"># UI Side ----</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="co"># Set Default style</span></a>
-<a class="sourceLine" id="cb8-6" data-line-number="6">shinyThings<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shinyThings/topics/radioSwitchButtons">radioSwitchButtons_default_style</a></span>(<span class="dt">selected_background =</span> <span class="st">"#00589a"</span>)</a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co"># Create input</span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8">shinyThings<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shinyThings/topics/radioSwitchButtons">radioSwitchButtons</a></span>(<span class="st">"input-id"</span>, <span class="dt">choices =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>])</a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co"># Server Side ----</span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11">shinyThings<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shinyThings/topics/radioSwitchButtons">updateRadioSwitchButtons</a></span>(<span class="st">"input-id"</span>, <span class="dt">selected =</span> <span class="st">"b"</span>)</a></code></pre></div>
-<details><p><summary>Demo Code</summary></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shiny)</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(shinyThings)</a>
-<a class="sourceLine" id="cb9-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb9-4" data-line-number="4">ui &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/fluidPage">fluidPage</a></span>(</a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/inputPanel">inputPanel</a></span>(</a>
-<a class="sourceLine" id="cb9-6" data-line-number="6">    <span class="kw"><a href="reference/radioSwitchButtons.html">radioSwitchButtons</a></span>(</a>
-<a class="sourceLine" id="cb9-7" data-line-number="7">      <span class="dt">inputId =</span> <span class="st">"other"</span>,</a>
-<a class="sourceLine" id="cb9-8" data-line-number="8">      <span class="dt">label =</span> <span class="st">"Yes or No?"</span>,</a>
-<a class="sourceLine" id="cb9-9" data-line-number="9">      <span class="dt">choices =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"Yes"</span> =<span class="st"> "yes"</span>, <span class="st">"No"</span> =<span class="st"> "no"</span>, <span class="st">"Maybe?"</span> =<span class="st"> "maybe"</span>),</a>
-<a class="sourceLine" id="cb9-10" data-line-number="10">      <span class="dt">selected_background =</span> <span class="st">"#eb1455"</span></a>
-<a class="sourceLine" id="cb9-11" data-line-number="11">    ),</a>
-<a class="sourceLine" id="cb9-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb9-13" data-line-number="13">    <span class="kw"><a href="reference/radioSwitchButtons.html">radioSwitchButtons</a></span>(</a>
-<a class="sourceLine" id="cb9-14" data-line-number="14">      <span class="dt">inputId =</span> <span class="st">"small"</span>,</a>
-<a class="sourceLine" id="cb9-15" data-line-number="15">      <span class="dt">label =</span> <span class="st">"Style"</span>,</a>
-<a class="sourceLine" id="cb9-16" data-line-number="16">      <span class="dt">choices =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="st">"plain"</span>, <span class="st">"bold"</span>, <span class="st">"italic"</span>),</a>
-<a class="sourceLine" id="cb9-17" data-line-number="17">      <span class="dt">choice_labels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
-<a class="sourceLine" id="cb9-18" data-line-number="18">        tags<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/builder">span</a></span>(<span class="dt">style =</span> <span class="st">"font-weight: normal"</span>, <span class="st">"P"</span>),</a>
-<a class="sourceLine" id="cb9-19" data-line-number="19">        tags<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/builder">strong</a></span>(<span class="st">"B"</span>),</a>
-<a class="sourceLine" id="cb9-20" data-line-number="20">        tags<span class="op">$</span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/builder">em</a></span>(<span class="st">"I"</span>)</a>
-<a class="sourceLine" id="cb9-21" data-line-number="21">      )</a>
-<a class="sourceLine" id="cb9-22" data-line-number="22">    )</a>
-<a class="sourceLine" id="cb9-23" data-line-number="23">  ),</a>
-<a class="sourceLine" id="cb9-24" data-line-number="24">  <span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/verbatimTextOutput">verbatimTextOutput</a></span>(<span class="st">"values"</span>)</a>
-<a class="sourceLine" id="cb9-25" data-line-number="25">)</a>
-<a class="sourceLine" id="cb9-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb9-27" data-line-number="27">server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</a>
-<a class="sourceLine" id="cb9-28" data-line-number="28">  output<span class="op">$</span>values &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/renderPrint">renderPrint</a></span>({</a>
-<a class="sourceLine" id="cb9-29" data-line-number="29">    <span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/str">str</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
-<a class="sourceLine" id="cb9-30" data-line-number="30">      <span class="dt">moreThanTwo =</span> input<span class="op">$</span>other,</a>
-<a class="sourceLine" id="cb9-31" data-line-number="31">      <span class="dt">style       =</span> input<span class="op">$</span>small</a>
-<a class="sourceLine" id="cb9-32" data-line-number="32">    ))</a>
-<a class="sourceLine" id="cb9-33" data-line-number="33">  })</a>
-<a class="sourceLine" id="cb9-34" data-line-number="34">}</a>
-<a class="sourceLine" id="cb9-35" data-line-number="35"></a>
-<a class="sourceLine" id="cb9-36" data-line-number="36"><span class="kw"><a href="https://www.rdocumentation.org/packages/shiny/topics/shinyApp">shinyApp</a></span>(ui, server)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># Try it out</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">shinyThings<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shinyThings/man/radioSwitchButtons.html">radioSwitchButtonsDemo</a></span>()</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co"># UI Side ----</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co"># Set Default style</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">shinyThings<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shinyThings/man/radioSwitchButtons.html">radioSwitchButtons_default_style</a></span>(<span class="dt">selected_background =</span> <span class="st">"#00589a"</span>)</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co"># Create input</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">shinyThings<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shinyThings/man/radioSwitchButtons.html">radioSwitchButtons</a></span>(<span class="st">"input-id"</span>, <span class="dt">choices =</span> letters[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>])</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co"># Server Side ----</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">shinyThings<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shinyThings/man/radioSwitchButtons.html">updateRadioSwitchButtons</a></span>(<span class="st">"input-id"</span>, <span class="dt">selected =</span> <span class="st">"b"</span>)</a></code></pre></div>
+<details><summary>Demo Code</summary>
+
+``` r
+library(shiny)
+library(shinyThings)
+
+ui 
 </details>
 </div>
+<div id="undoredo-history-undo-redo-history" class="section level3">
+<h3 class="hasAnchor">
+<a href="#undoredo-history-undo-redo-history" class="anchor"></a>Undo/Redo History {#undo-redo-history}</h3>
+<p>A Shiny module for undo/redo history. The Shiny module accepts an arbitrary reactive data value. Changes in the state of this reactive value are tracked and added to the user’s history. The user can then repeatedly undo and redo to walk through this stack. The module returns the current selected value of the reactive from this historical stack, or <code>NULL</code> when the app state was changed by the user.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># Try it out</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">shinyThings<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shinyThings/man/undoHistory.html">undoHistoryDemo</a></span>()</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co"># UI Side ----</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co"># UI with undo/redo buttons</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="kw"><a href="reference/undoHistory.html">undoHistoryUI</a></span>(<span class="st">"module-id"</span>)</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co"># Server Side ----</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co"># Create a reactive value whose state will be tracked. Note that you control </span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co"># the structure of the data being tracked and also how the data will be </span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co"># restored. `undo_app_state` will have the same structure.</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12">undo_app_state &lt;-<span class="st"> </span><span class="kw"><a href="reference/undoHistory.html">undoHistory</a></span>(<span class="st">"module-id"</span>, <span class="dt">value =</span> <span class="kw">reactive</span>({</a>
+<a class="sourceLine" id="cb6-13" data-line-number="13">  <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(</a>
+<a class="sourceLine" id="cb6-14" data-line-number="14">    <span class="dt">text =</span> input<span class="op">$</span>a_text_input_id,</a>
+<a class="sourceLine" id="cb6-15" data-line-number="15">    <span class="dt">selected =</span> input<span class="op">$</span>a_select_input_id</a>
+<a class="sourceLine" id="cb6-16" data-line-number="16">  )</a>
+<a class="sourceLine" id="cb6-17" data-line-number="17">}))</a>
+<a class="sourceLine" id="cb6-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co"># Use an observer to update inputs as required as the user steps through the</span></a>
+<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co"># undo/redo history stack.</span></a>
+<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="kw">observe</span>({</a>
+<a class="sourceLine" id="cb6-22" data-line-number="22">  <span class="kw">req</span>(<span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span>(undo_app_state))</a>
+<a class="sourceLine" id="cb6-23" data-line-number="23">  <span class="kw">updateTextInput</span>(session, <span class="st">"a_text_input_id"</span>, <span class="dt">value =</span> <span class="kw">undo_app_state</span>()<span class="op">$</span>text)</a>
+<a class="sourceLine" id="cb6-24" data-line-number="24">  <span class="kw">updateSelectInput</span>(session, <span class="st">"a_select_input_id"</span>, <span class="dt">selected =</span> <span class="kw">undo_app_state</span>()<span class="op">$</span>selected)</a>
+<a class="sourceLine" id="cb6-25" data-line-number="25">})</a></code></pre></div>
+</div>
+</details>
 </div>
 </div>
   </div>
@@ -346,12 +255,11 @@
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://www.garrickadenbuie.com">Garrick Aden-Buie</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-7111-0077" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
+<a href="https://www.garrickadenbuie.com">Garrick Aden-Buie</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-7111-0077" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
 </ul>
 </div>
 
-      </div>
-
+  </div>
 </div>
 
 
@@ -360,12 +268,14 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>
