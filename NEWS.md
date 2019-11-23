@@ -1,3 +1,7 @@
+# shinyThings 0.4.0
+
+* Add `undoHistory()` module
+
 # shinyThings 0.3.0
 
 * Add `buttonGroup()` input.
