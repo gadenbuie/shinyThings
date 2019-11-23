@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">shinyThings</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -106,7 +106,7 @@
 <li><a href="#pagination">Pagination UI</a></li>
 <li><a href="#toggle-button-groups">Toggle Button Groups</a></li>
 <li><a href="#radio-switch-buttons">Radio Switch Buttons</a></li>
-<li><a href="#undo-redo-history">Undo/Redo History</a></li>
+<li><a href="#undoredo-history">Undo/Redo History</a></li>
 </ul>
 <div id="dropdownbutton" class="section level3">
 <h3 class="hasAnchor">
@@ -199,9 +199,9 @@ library(shinyThings)
 ui 
 </details>
 </div>
-<div id="undoredo-history-undo-redo-history" class="section level3">
+<div id="undoredo-history" class="section level3">
 <h3 class="hasAnchor">
-<a href="#undoredo-history-undo-redo-history" class="anchor"></a>Undo/Redo History {#undo-redo-history}</h3>
+<a href="#undoredo-history" class="anchor"></a>Undo/Redo History</h3>
 <p>A Shiny module for undo/redo history. The Shiny module accepts an arbitrary reactive data value. Changes in the state of this reactive value are tracked and added to the user’s history. The user can then repeatedly undo and redo to walk through this stack. The module returns the current selected value of the reactive from this historical stack, or <code>NULL</code> when the app state was changed by the user.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># Try it out</span></a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">shinyThings<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/shinyThings/man/undoHistory.html">undoHistoryDemo</a></span>()</a>
