@@ -206,7 +206,7 @@ in its <code>DESCRIPTION</code> file, if any.</p></td>
     
 <ul>
 <li><p><code>paginationUI</code>: The user interface for the pager module. The pager is
-contained in a single column in a <code>fluidRow()</code>.</p></li>
+contained in a single column in a <code><a href='https://rdrr.io/pkg/shiny/man/fluidPage.html'>fluidRow()</a></code>.</p></li>
 <li><p><code>pagerUI</code>: Next/previous buttons that can be used in addition to,
 or in place of <code>paginationUI()</code>.</p></li>
 <li><p><code>pagerDemo</code>: Example app demonstrating usage of the pager module.</p></li>
@@ -215,6 +215,61 @@ or in place of <code>paginationUI()</code>.</p></li>
 
     <p><a href='https://getbootstrap.com/docs/3.3/components/#pagination'>https://getbootstrap.com/docs/3.3/components/#pagination</a></p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/interactive.html'>interactive</a></span>()) {
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>shiny</span>)
+
+<span class='no'>ui</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/fluidPage.html'>fluidPage</a></span>(
+  <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/titlePanel.html'>titlePanel</a></span>(<span class='st'>"shinyThings Pagination"</span>),
+  <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/sidebarLayout.html'>sidebarLayout</a></span>(
+    <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/sidebarLayout.html'>sidebarPanel</a></span>(
+      <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>6</span>,
+
+      <span class='no'>tags</span>$<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>h4</a></span>(<span class='st'>"paginationUI()"</span>),
+      <span class='kw pkg'>shinyThings</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shinyThings/man/pager.html'>paginationUI</a></span>(<span class='st'>"pager"</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>12</span>, <span class='kw'>offset</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"text-center"</span>),
+      <span class='no'>tags</span>$<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>hr</a></span>(),
+
+      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/sliderInput.html'>sliderInput</a></span>(<span class='st'>"page_break"</span>, <span class='st'>"Page Size"</span>, <span class='kw'>min</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>max</span> <span class='kw'>=</span> <span class='fl'>6</span>, <span class='kw'>step</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>3</span>),
+      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/helpText.html'>helpText</a></span>(<span class='no'>tags</span>$<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>code</a></span>(<span class='st'>"page_break"</span>)),
+      <span class='no'>tags</span>$<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>hr</a></span>(),
+
+      <span class='no'>tags</span>$<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>h4</a></span>(<span class='st'>"pagerUI()"</span>),
+      <span class='kw pkg'>shinyThings</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shinyThings/man/pager.html'>pagerUI</a></span>(<span class='st'>"pager"</span>, <span class='kw'>centered</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    ),
+    <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/sidebarLayout.html'>mainPanel</a></span>(
+      <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>6</span>,
+
+      <span class='no'>tags</span>$<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>p</a></span>(<span class='st'>"Page indices:"</span>),
+      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/verbatimTextOutput.html'>verbatimTextOutput</a></span>(<span class='st'>"page_indices"</span>),
+
+      <span class='no'>tags</span>$<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/builder.html'>p</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/HTML.html'>HTML</a></span>(<span class='st'>"Paged output (&lt;code&gt;letters&lt;/code&gt;):"</span>)),
+      <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/htmlOutput.html'>uiOutput</a></span>(<span class='st'>"paged_output"</span>)
+    )
+  )
+)
+
+<span class='no'>server</span> <span class='kw'>&lt;-</span> <span class='kw'>function</span>(<span class='no'>input</span>, <span class='no'>output</span>) {
+  <span class='co'>## page_break and n_items can be reactive or fixed values</span>
+  <span class='co'># page_break &lt;- 4</span>
+  <span class='co'># n_items &lt;- length(letters)</span>
+  <span class='no'>n_items</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/reactiveVal.html'>reactiveVal</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span>(<span class='no'>letters</span>))
+  <span class='no'>page_break</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/reactive.html'>reactive</a></span>({<span class='no'>input</span>$<span class='no'>page_break</span>})
+
+  <span class='no'>page_indices</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>shinyThings</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/shinyThings/man/pager.html'>pager</a></span>(<span class='st'>"pager"</span>, <span class='no'>n_items</span>, <span class='no'>page_break</span>)
+
+  <span class='no'>output</span>$<span class='no'>page_indices</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderPrint.html'>renderPrint</a></span>({
+    <span class='fu'>page_indices</span>()
+  })
+
+  <span class='no'>output</span>$<span class='no'>paged_output</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/shiny/man/renderUI.html'>renderUI</a></span>({
+    <span class='no'>tags</span>$<span class='fu'>ul</span>(
+      <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='no'>letters</span>[<span class='fu'>page_indices</span>()], <span class='no'>tags</span>$<span class='no'>li</span>)
+    )
+  })
+}
+
+<span class='fu'><a href='https://rdrr.io/pkg/shiny/man/shinyApp.html'>shinyApp</a></span>(<span class='no'>ui</span>, <span class='no'>server</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -222,6 +277,7 @@ or in place of <code>paginationUI()</code>.</p></li>
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#functions">Functions</a></li>
       <li><a href="#references">References</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
